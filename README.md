@@ -1,4 +1,4 @@
-# progetti_git
+# Progetti realizzati
 
 
 
@@ -26,3 +26,5 @@
   > Progetto Tweb
 
 * Stage
+  > Tesi
+  > Codice
