@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>550</x>
+      <y>0</y>
+      <w>120</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>   Cuoco / Chef</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1150</x>
+      <y>0</y>
+      <w>100</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>System</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>90</y>
+      <w>30</w>
+      <h>2330</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;2310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1190</x>
+      <y>80</y>
+      <w>30</w>
+      <h>2340</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;2320.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>400</x>
+      <y>590</y>
+      <w>950</w>
+      <h>1680</h>
+    </coordinates>
+    <panel_attributes>LOOP (n)
+--
+
+
+
+layer=-2
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>490</x>
+      <y>150</y>
+      <w>790</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>ALT
+--
+
+
+
+-.
+
+
+
+
+-.
+
+
+
+
+-.
+
+
+
+
+-.
+
+
+
+
+-.
+
+
+
+
+
+
+
+layer=-1
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>170</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>1. creaRicetta (titolo)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>190</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ricetta creata</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>240</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>1a modificaRicetta (ricetta)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>260</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ricetta</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>670</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2. assegnaIstruzioneRicetta(istruzione, posizione)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>690</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ricetta aggiornata</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>310</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>1a modificaRicetta(ricetta)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>330</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+RIcetta in uso || Autore non proprietario
+fg=red
+</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1830</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>4. Modifica Dati Ricetta (?dosi, ?classificazione,?TT, ?TACc, ?TACv, ?TUc, ?TUv, ?note)
+lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>2350</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ricetta </panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>400</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+OK</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>380</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>1b eliminaRicetta(ricetta)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>1190</x>
+      <y>340</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=termination
+
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>490</x>
+      <y>620</y>
+      <w>790</w>
+      <h>860</h>
+    </coordinates>
+    <panel_attributes>LOOP (n)
+--
+
+
+
+layer=-3
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>520</x>
+      <y>650</y>
+      <w>730</w>
+      <h>810</h>
+    </coordinates>
+    <panel_attributes>ALT
+--
+
+
+
+-.
+
+
+
+
+
+-.
+
+
+
+
+
+-.
+
+
+
+
+
+-.
+
+
+
+
+
+-.
+
+
+
+
+
+-.
+
+
+
+
+
+-.
+
+
+
+
+	
+-.
+
+
+
+
+-.
+
+
+
+
+layer=-1
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>750</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2a  creaPassoSemplice(testo, preparazioni[ ])
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>770</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+passo semplice</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>830</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2b  creaRipetizione(istruzione, n_ripetizioni)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>850</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ripetizione</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>920</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2c creaVariante(istruzionePrincipale,  istruzioneVariante)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>940</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+variante</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1000</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2d creaRaggruppamento(Istruzioni[ ])
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1020</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+raggruppamento</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1090</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2e creaCopiaIstruzione(istruzione, testo)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1110</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+copia istruzione</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1170</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2f modificaIstruzione(istruzione, nuovaIstruzione, nuovoTesto)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1190</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+istruzione modificata</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>440</x>
+      <y>1530</y>
+      <w>870</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>LOOP (n)
+--
+
+
+
+layer=0
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1620</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ricetta aggiornata</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1600</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>3. Modifica note all'istruzione (istruzione, note)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>2320</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>6. pubblicaRicetta()
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>510</x>
+      <y>300</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>* [Exception] *
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>440</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>1b eliminaRicetta(ricetta)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>460</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+RIcetta in uso || Autore non proprietario
+fg=red
+</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>510</x>
+      <y>440</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>* [Exception] *
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>510</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>1c visualizzaRicetta(ricetta)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>530</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ricetta</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1330</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2g rimuoveIstruzione(istruzione)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1350</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ricetta aggiornata</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1250</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2f modificaIstruzione(istruzione, nuovaIstruzione, nuovoTesto)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1270</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+RIcetta in uso || Autore non proprietario
+fg=red
+</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>520</x>
+      <y>1240</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>* [Exception] *
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>1190</x>
+      <y>1280</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=termination
+
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1420</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+RIcetta in uso || Autore non proprietario
+fg=red
+</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>1190</x>
+      <y>1430</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=termination
+
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1400</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>2g rimuoveIstruzione(istruzione)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>520</x>
+      <y>1390</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>* [Exception] *
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>490</x>
+      <y>1560</y>
+      <w>790</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>opt
+--
+
+
+
+layer=-2
+fg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>520</x>
+      <y>1590</y>
+      <w>730</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>alt
+--
+
+
+-.
+
+
+
+layer=-2
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>1660</y>
+      <w>630</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>3. Modifica note all'istruzione (istruzione, note)
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>610.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1680</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+RIcetta in uso || Autore non proprietario
+fg=red
+</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>1190</x>
+      <y>1690</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=termination
+
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>520</x>
+      <y>1650</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>* [Exception] *
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>440</x>
+      <y>1780</y>
+      <w>870</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>LOOP (n)
+--
+
+
+
+layer=0
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1850</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+ricetta aggiornata</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>450</x>
+      <y>1810</y>
+      <w>840</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>opt
+--
+
+
+
+layer=-2
+fg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>500</x>
+      <y>1820</y>
+      <w>760</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>alt
+--
+
+
+-.
+
+
+
+layer=-2
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1910</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+RIcetta in uso || Autore non proprietario
+fg=red
+</panel_attributes>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>1190</x>
+      <y>1920</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=termination
+
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>510</x>
+      <y>1890</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>* [Exception] *
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1890</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>4. Modifica Dati Ricetta (?dosi, ?classificazione,?TT, ?TACc, ?TACv, ?TUc, ?TUv, ?note)
+lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>560</x>
+      <y>2300</y>
+      <w>680</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>alt
+--
+
+
+
+layer=0
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>440</x>
+      <y>2030</y>
+      <w>870</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>LOOP (n)
+--
+
+
+
+layer=0
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>460</x>
+      <y>2060</y>
+      <w>830</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>opt
+--
+
+
+
+layer=-2
+fg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>510</x>
+      <y>2080</y>
+      <w>760</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>alt
+--
+
+
+
+
+
+layer=-2
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>2090</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>5. creaPreperazione(amount,description,note )
+lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>600.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>2130</y>
+      <w>630</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+preparazione creata</panel_attributes>
+    <additional_attributes>10.0;20.0;610.0;20.0</additional_attributes>
+  </element>
+</diagram>

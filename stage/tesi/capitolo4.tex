@@ -1,0 +1,427 @@
+\chapter{Sviluppo}
+\label{ch:development}
+
+In questo capitolo verranno illustrate tutte le fasi riguardanti lo sviluppo del progetto e quali risultati sono stati ottenuti per quanto riguarda il prodotto finale. 
+
+In particolare nella Sezione~\ref{sec:product_development} si vedrà dettagliatamente il sistema che è stato sviluppato, di quali parti si compone
+e come queste ultime interagiscono tra di loro. Nella Sezione~\ref{sec:phases_of_development} invece, si vedrà come è stato raggiunto il risultato finale.
+
+\section{Prodotto sviluppato}
+\label{sec:product_development}
+
+Il file principale che mette in funzione tutti i componenti(sensore, fotocamera e servizi AWS) è \textbf{``project.py''}, il quale contiene uno script in linguaggio 
+Python da far girare sulla scheda Raspberry Pi.
+Dopo aver importato le opportune librerie e collegato i vari componenti alla scheda Raspberry Pi, creato i vari database e la funzione Lambda dalla console AWS
+(configurazioni hardware e software verrano tratti nel dettaglio nella Sezione~\ref{sec:phases_of_development}) si è scritto come riportato nel 
+Listato~\ref{ciclo_while} la parte di codice che gestisce la parte principale del progetto.
+
+\begin{lstlisting}[language=Python,frame=single,caption=Codice Python ,captionpos=t,label=ciclo_while]
+    i2c = busio.I2C(board.SCL, board.SDA)
+    sensor = adafruit_vcnl4040.VCNL4040(i2c)
+    #variabile rappresentante il tempo trascorso
+    contatore = 0  
+    while True:
+        #rilevato il passaggio della lettera
+        if sensor.proximity >= 10: 
+            print( ``Proximity:'', 
+            sensor.proximity , ``then take a photo'' )
+            capture_image() #scatto la foto
+            upload_image()  #la carico in S3
+            send_email()    #e mando l'e-mail
+            sleep(3)
+        else:
+            time.sleep( 0.5 )
+            contatore = contatore+1
+            # passato 1 minuto procedo
+            if( contatore == 120 ):
+                #leggendo le nuove e-mail ricevute
+                read_email_from_gmail()
+                #azzero nuovamente il contatore
+                contatore=0     
+\end{lstlisting}
+La variabile ``\texttt{contatore}'' si occupa di tener conto del tempo trascorso, una volta inizializzata la variabile ``\texttt{sensor}'' si entra nel ciclo while 
+infinito il quale, rilevato il passaggio di un oggetto (la lettera nel nostro caso) gestito nell'If come illustrato nel Listato~\ref{ciclo_while}, viene eseguito il 
+metodo \textit{capture\_image()}, Listato~\ref{capture_image}, dove verrà scattata una foto solo dopo aver effettuato una sleep
+\footnote{https://www.programiz.com/python-programming/time/sleep} di 2 secondi in modo da dare il tempo ai sensori di luce della fotocamera di stabilizzarsi, 
+dopodiché, si potrà procedere memorizzando temporaneamente la foto appena scattata nel Desktop sulla scheda Raspberry Pi.
+\begin{lstlisting}[language=Python,frame=single,caption=Funzione capture\_image,captionpos=t,label=capture_image]
+    def capture_image():
+        camera = PiCamera()
+        camera.start_preview()
+        sleep(2)
+        camera.capture( `/home/pi/Desktop/' + filename )
+        camera.stop_preview()
+        camera.close()
+        return    
+\end{lstlisting}
+A questo punto si può procedere caricando la foto appena scattata su AWS, nel database Amazon S3, all'interno del bucket ``images-sender'' creato precedentemente, come vedremo 
+più avanti, il codice utilizzato per caricare la foto su Amazon S3 viene illustrato nel Listato~\ref{upload_image}.
+\begin{lstlisting}[language=Python,frame=single,caption=Funzione upload\_image code,captionpos=t,label=upload_image]
+    def upload_image():
+        file = open( filename, `rb' )
+        ret = s3.put_object( Bucket = `images-sender' , Key=filename , Body=file )
+        return
+\end{lstlisting}
+Il prossimo passo sarà quello di inviare una e-mail che notifica la ricezione di nuova posta all'utente, per far ciò viene eseguito il metodo \textit{send\_email()}.
+
+Inizialmente si aspetta che venga eseguita la funzione Lambda la quale, come vedremo nella Sezione~\ref{sec:phases_of_development}, eseguirà il riconoscimento facciale
+della foto appena caricata nel database confontandola con i volti presenti nella collezione di volti di Amazon Rekognition(codice illustrato nel 
+Listato~\ref{lambda_code}), quindi, se la foto appena caricata ha una somiglianaza ``threshold'' dell'80\% almeno, si aggiunge al Metadata della foto appena caricata 
+il nome, seguito dal cognome, corrispondenti al volto cui la foto è stata associata, se invece non corrisponde a nessun volto, sarà sufficente lasciare il campo Metadata vuoto.
+
+Ritornando all'esecuzione del metodo \textit{send\_email()}, si procede verificando che il campo Metadata sia vuoto o meno, a questo punto, con un controllo 
+condizionale If-Else si gestiscono i due casi:
+\begin{enumerate}
+    \item \textbf{Campo Metadata vuoto}: in questo caso il volto non è stato riconosciuto, succesivamente si darà la possibilità all'utente di memorizzare il volto
+    aggiungendolo ai database, in modo da essere riconosciuto successivamente, in questo caso si invia all'utente un e-mail, la quale informa l'utente della ricezione
+    di nuova posta, precisando che il volto non è presente nel database e quindi allegando la foto scattata, all'e-mail inviata.
+    \item \textbf{Campo Metadata contiene una stringa}: in questo caso il volto è stato riconosciuto, quindi la funzione Lambda ha inserito il nome corrispondente nel
+    campo Metadata, a questo punto si può procedere inviando un e-mail che notifica la ricezione di nuova posta, questa volta però non viene allegata la foto ma 
+    viene semplicemente indicato il nome del mittente, ottenuto dal campo Metadata che contiene il nome corrispondente.
+\end{enumerate}
+Infine si procede eliminando, sia localmente su Rapsberry Pi che in Amazon S3, la foto appena processata.
+
+Come è possibile vedere nel codice mostrato nel Listato~\ref{ciclo_while}, se non viene rilevato nessun passaggio di oggetti si ricade nell'Else, qui viene gestito il
+caso in cui non viene ricevuta posta per un determinato periodo di tempo.
+In questo caso si effettua una sleep di 0.5 secondi, quindi si incrementa di 1 la variabile ``\texttt{contatore}'', a questo punto si averanno solo due casi possibili:
+\begin{enumerate}
+    \item \textbf{If:} in questo caso viene verificato se la variabile contiene il numero 120, il che significa che è passato 1 minuto, a questo punto si può eseguire il metodo
+    \textit{read\_email\_from\_gmail()}, il cui funzionamento verrà esposto più avanti, quindi si azzera la avariabile ``\texttt{contatore}'', in modo da far ripartire
+    il conteggio del tempo trascorso.
+    \item in questo caso non entro nell'If in quanto la variabile non contiene il numero 120, non essendo  passato ancora un minuto si può procedere semplicemente senza
+    far niente, quindi si ritorna all'esecuzione della riga 7 nel Listato~\ref{ciclo_while}.
+\end{enumerate}
+Come detto precedentemente, viene data all'utente la possibilità di aggiungere volti ai database per renderne possibile il riconoscimento facciale successivamente 
+tramite il servizio AWS Amazon Rekognition. Si è pensato di aggiungere volti al database tramite l'inoltro dell'e-mail (quella precedentemente ricevuta che notifica 
+la ricezione di posta ), aggiungendo al corpo del messaggio la parola chiave ``ADD'', seguita dal nome e cognome (separati da uno spazio bianco) con cui lo si vuole memorizzare, così facendo si 
+aggiungerà quindi il volto presente nell'allegato dell'email associandone le generalità specificate.
+
+Per far ciò verrà usata la funzione \textit{read\_email\_from\_gmail()} la quale viene eseguita ogni minuto. Alla sua esecuzione vengono create le opportune 
+connessioni ai server Gmail e quindi si selezionano tutte le e-mail in ricezione, ricevute dall'indirizzo precedentemente impostato, con presente nel corpo del 
+messaggio la dicitura ``\texttt{Forwarded message}'' il che significa che saranno selezionate solo le e-mail inoltrate, in modo da fare una prima selezione su quali analizzare.
+\begin{lstlisting}[caption=Espressione regolare,captionpos=t,label=regular_expression]
+full_name = (re.search(r"([A-Z]{1}[a-z]+\s{1}){2,3}",str(emails_info[num]['Body'])).group()).strip()
+\end{lstlisting}
+A questo punto si può procedere filtrando ulteriormente le e-mail ricevute analizzando solo quelle che presentano nel corpo del messaggio la parola chiave ``ADD'',
+le informazioni di ogni e-mail (oggetto, data, e-mail mittente) vengono memorizzate nella variabile di tipo dictonary ``\textit{emails\_info}'', mentre le immagini in allegato 
+vengono memorizzate sulla scheda Raspberry Pi con il nome ottenuto dal corpo del messaggio, ottenuto dall'espressione regolare nel Listato~\ref{regular_expression}
+seguito dall'estensione ``.jpg''.
+\begin{lstlisting}[language=Python,frame=single,caption=Codice che gestisce la ripetizione dei nomi,captionpos=t,label=repetition_image]
+    while True:
+        try:
+            #se non viene lanciata alcuna eccezione, il file esiste 
+            #attualmente, quindi devo modificarlo aggiungendo un 
+            #numero dopo il nome
+            fp = open("attachment/uploaded/"+file_name, 'rb')
+            pass
+        except Exception:
+            # altrimenti viene lanciata l'eccezione(non esiste un 
+            #file con il nome specificato) quindi creo il file
+            emails_info[num]['File_Name']= file_name
+            emails_info[num]['Full_Name']= full_name
+            save_attachment(msg,file_name)
+            break
+        repetition = repetition + 1 
+        file_name = file_name.split(".")[0]+str(repetition)+".jpg"
+\end{lstlisting}
+Per evitare il problema del nome del file già esistente, come è possibile vedere dal codice illustrato nel Listato~\ref{repetition_image}, viene aggiunto un numero 
+alla fine del nome, tutte le foto già caricate invece, si troveranno al percorso ``Desktop/attachment/uploaded/''.
+
+Successivamente si procede inserendo tutte le foto presenti nel percorso specificato (nella scheda Raspberry Pi) in Amazon S3 e Amazon DynamoDB, quindi, solo dopo 
+averle caricate è possibile eliminare le e-mail appena processate (come mostrato nel Listato~\ref{delete_email}) in modo da evitare l'aggiunta degli stessi volti alla 
+prossima esecuzione della funzione \textit{read\_email\_from\_gmail()}.
+\begin{lstlisting}[language=Python,frame=single,caption=Codice che elimina le e-mail,captionpos=t,label=delete_email]
+    for msg in id_list: 
+        # elimino le email appena processate in quanto le foto sono 
+        #state aggiunte ai database
+        mail.store(msg, '+FLAGS', '\\Deleted') 
+    mail.expunge()
+\end{lstlisting}
+Infine prima di terminare l'esecuzione, viene chiuso ed effettuato il logout dal server, pronto alla prossima esecuzione della funzione.
+
+\section{Fasi di sviluppo}
+\label{sec:phases_of_development}
+Prima della scrittura dello script Python, è stato necessario preparare tutto l'occorrente essenziale al funzionamento del progetto, sia lato hardware, come il 
+collegamento del sensore e della fotocamera alla scheda Raspberry Pi, che lato software, come l'installazione del sistema operativo Raspbian, l'aggiornamento ed il 
+download dei vari pacchetti illustrati nella sezione~\ref{sec:library}, l'interazione con i vari servizi AWS ecc\dots
+
+In questa sezione quindi si vedrà più nel dettaglio la parte appena descritta.
+
+\subsection{Configurazione Raspberry Pi}
+All'acquisto della scheda Raspberry Pi viene fornita una scheda SD con preinstallato il sistema operativo Raspbian, una volta installato seguendo varie guide sul web
+in cui viene descritta passo passo ogni fase da seguire, si può procedere installando Python con il seguente comando eseguito da terminale.
+\begin{lstlisting}[frame=lines]
+    sudo apt-get install python-serial
+\end{lstlisting}
+Per accedere ai servizi AWS è stato installato Boto3, l'SDK di AWS per Python(\ref{sec:boto3}), mentre per semplificare la gestione dei servizi AWS è stata installata
+AWS Command Line Interface(AWS CLI), la quale permette di creare qualsiasi oggetto AWS dalla riga di comando senza utilizzare l'interfaccia GUI.
+
+Per la loro installazione sono state eseguite da terminale le righe di comando illustrate di seguito.
+\begin{lstlisting}[frame=lines]
+    pip install boto3
+    pip install awscli
+\end{lstlisting} 
+Prima di poter usare AWS CLI bisogna però seguire le istruzioni dell'articolo\cite{cli}, infatti dopo aver scelto la regione in AWS(consigliabile il più vicino 
+possibile all'area geografica dove si risiede) si può procedere eseguendo il comando ``\textit{aws configure}'', se eseguite correttamente le istruzioni, sarà quindi
+possibile utilizzare AWS CLI per qualsiasi operazione sui servizi AWS.
+
+\subsection{Servizi Amazon Web Services}
+Nella Sezione~\ref{sec:aws}, abbiamo visto che sono stati utilizzati vari servizi AWS, l'interazione con essi verrà trattata qui di seguito.
+
+Come visto precedentemente Amazon Rekognition non memorizza copie delle immagini analizzate. Al contrario, memorizza i vettori delle caratteristiche del volto come la
+rappresentazione matematica di un volto all'interno della raccolta. 
+Quindi prima di tutto è stata creata la collection, avendo installato e configurato l'interfaccia della riga di comando di AWS (AWS CLI), è stato utilizzato il 
+seguente comando per la sua creazione.
+\begin{lstlisting}[frame=lines]
+    aws rekognition create-collection --collection-id collection --region eu-central-1 
+\end{lstlisting}
+Con questo comando verra creata la collection a cui è stato dato il nome ``collection'', specificando che la regione scelta è ``eu-central-1'', in quanto questo server 
+è il più vicino all'area geografica dove si risiede. 
+A questo punto, si può procedere creando un ruolo dalla console IAM chiamato ``\textsl{lambda\_role}'', come visto nella Sezione \ref{sec:iam}, a cui sono stati associati 
+i seguenti permessi:
+\begin{itemize}
+    \item AmazonRekognitionFullAccess
+    \item AmazonDynamoDBFullAccess
+    \item AmazonS3FullAccess
+    \item IAMFullAccess
+\end{itemize}
+Così facendo si avranno tutti i permessi per creare e maipolare i vari servizi utilizzati.
+Successivamente, viene creata una tabella Amazon DynamoDB. 
+
+In questo progetto la tabella DynamoDB verrà usata come un semplice archivio contenente delle coppie \texttt{chiave-valore},
+per mantenere un riferimento di FaceId restituito da Amazon Rekognition e il nome completo della persona. Per la sua creazione è stato eseguito il 
+seguente comando.
+\begin{lstlisting}[frame=lines]
+    aws dynamodb create-table --table-name sender_id \
+    --attribute-definitions AttributeName=RekognitionId,AttributeType=S \
+    --key-schema AttributeName=RekognitionId,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
+    --region eu-central-1
+\end{lstlisting}
+Questo comando creerà quindi una tabella DynamoDB chiamata ``\textsl{sender\_id}'' contenete due campi:
+\begin{itemize}
+    \item \textbf{RekognitionId}
+    \item \textbf{FullName}
+\end{itemize}
+Il primo, ``\textsl{RekognitionId}'', conterrà tutti gli ID univoci ottenuti dall'associazione ai volti della loro rappresentazione matematica tramite Amazon Rekognition, 
+mentre il secondo, ``\textsl{FullName}'', conterrà una stringa che rappresenta il nome seguito dal cognome di tutti i volti presenti nella tabella.
+
+Per la creazione del database Amazon S3 è stato usato il seguente comando.
+\begin{lstlisting}[frame=lines]
+    aws s3 mb s3://images-sender --region eu-central-1
+\end{lstlisting}
+Questo database è stato creato assegnadogli il nome ``images-sender'', specificando come di consuetudine la regione ``eu-central-1''.
+Come ultimo passo, è stata creata la funzione Lambda che viene attivata ogni volta che una nuova foto viene caricata su Amazon S3. Per creare la funzione è stata 
+utilizzata la console di AWS Lambda selezionando l'opzione autore da zero (Author from scratch).
+Alla funzione Lambda è stato assegnato il nome ``\textsl{photo\_rekognition}'', prima di essere operativa naturalmente si è scritto il codice mostrato nel 
+Listato~\ref{lambda_code},
+\begin{lstlisting}[language=Python,frame=single,caption=Codice Lambda,captionpos=t,label=lambda_code]
+    def lambda_handler(event, context):
+        try:
+            #recupero il nome del bucket
+            bucket = event['Records'][0]['s3']['bucket']['name']
+            collectionId='collection'
+            #recupero la chiave dell'oggetto caricato in s3
+            fileName = urllib.parse.unquote_plus(event['Records'][
+            0]['s3']['object']['key'], encoding='utf-8', errors='')
+            # verranno selezionati solo i volti con una 
+            #somiglianaza dell'80% almeno
+            threshold = 80
+            rekognition=boto3.client('rekognition')
+            dynamodb = boto3.client('dynamodb')
+            s3 = boto3.client('s3')
+            response=rekognition.search_faces_by_image(
+                        CollectionId=collectionId,
+                        Image={'S3Object':{'Bucket':bucket,
+                        'Name':fileName}},
+                        FaceMatchThreshold=threshold,
+                        MaxFaces=maxFaces)
+            faceMatches=response['FaceMatches']
+            if faceMatches:
+                # recupero il nome(grazie all'id del volto 
+                #riconosciuto)
+                face = dynamodb.get_item(
+                    TableName='sender_id',  
+                    Key={'RekognitionId': {'S': faceMatches[0]
+                    ['Face']['FaceId']}}
+                    )
+                if 'Item' in face:
+                    name = face['Item']['FullName']['S']
+                    s3.copy_object(
+                        Bucket=bucket,Key=fileName,
+                        CopySource={"Bucket": bucket, 
+                        "Key": fileName},
+                        Metadata={"x-amz-meta-fullname": name},
+                        MetadataDirective="REPLACE")
+                else:
+                    print ('no match found in person lookup')
+            else :
+                print("No matching face")
+        except Exception as e:
+            print("Funzione terminata con errore.....")
+            print
+            print(str(e))
+\end{lstlisting}
+succesivamente è stato configurando l'evento che ne farà lanciare l'esecuzione, in particolare si tratta di un evento di tipo ``\textsl{ObjectCreatedByPut}'', 
+inoltre è stato specificato il prefisso ``\textsl{image}'' la cui funzione verrà esposta di seguito.
+
+Ricapitolando, ogni volta in cui viene creato un oggetto tramite il suo inserimento, assegnado come nome del file il prefisso ``\textsl{image}'' seguito dall'estensione del 
+file, sarà eseguita la funzione Lambda che confronta il volto appena caricato nel database Amazon S3 con quelli presenti nella collection di Amazon Rekognition, se 
+qualcuno di essi ha una somiglianza di almeno l'80\% , si procederà inserendo nei Metadata del volto caricato in Amazon S3. il nome e cognome (separati da uno spazio bianco)
+corrispondenti al volto riconosciuto, ricavati da Amazon DynamoDB, tramite il corrispondente ID.
+
+\subsection{PuTTY}
+Come abbiamo visto nelle altre Sezioni, il codice viene eseguito sulla scheda Raspberry Pi, in Figura ~\ref{photo_raspberry}, per la scrittura dello script Python, 
+l'assemblaggio dei vari componenenti e per eventuali debug si è optato per l'utilizzo di PuTTY, un software open source utilizzato per la gestione in remoto dei server 
+usando SSH, il cui sviluppo risale ai primi mesi del 1999 da parte del programmatore Simon Tatham.
+
+Questo software per Windows, rende possibile l’interazione con sistemi Unix remoti grazie all’utilizzo dei protocolli SSH, Rlogin e Telnet. Per il progetto è stato
+utilizzato il protocollo SSH il quale, mantenendo una connessione Internet attiva, permette di stabilire una sessione cifrata remota con un'altra macchina 
+nella rete (Raspberry Pi nel nostro caso).
+
+Una volta connessi al server remoto, ogni tipologia di comando digitato attraverso la piattaforma PuTTY arriverà al server remoto con cui si è appena effettuata
+la connesione, in egual modo, ogni risposta ai comandi riprodotta dal server verrà trasferita sulla piattaforma locale personale. Così facendo sarà possbile 
+utilizzare la nostra scheda Raspberry per tutte le operazioni necessarie alla realizzazione del progetto.
+
+\subsection{WinSCP}
+Per la creazione o per tutte le manipolazioni o trasferimenti di file è stato usato Winscp, un client grafico open source per Windows per SFTP e FTP la cui funzione
+principale è quella di copiare in modo sicuro file tra un computer locale(macchina personale Windows) e uno remoto(scheda Raspberry Pi).
+
+Utilizzando questa applicazione si è trasferito facilmente qualsiasi file dalla macchina Windows locale al Rapsberry Pi, inoltre si è semplificata la manipolazione dei 
+file in quanto viene messa a disposizione un'interfaccia grafica molto semplice e intuitiva.
+
+\section{Testing}
+\label{ch:testing}
+In questa sezione verranno illustrati i vari test eseguiti sul codice.
+
+Prima di tutto è stato scritto un piccolo script bash(Listato~\ref{bash_code})il quale, tramite crontab, ad ogni avvio della scheda Raspberry Pi, ed ogni 5 minuti, esegue 
+il codice del file chiamato ip.txt nel quale viene memorizzato l’IP del Raspberry, lo script bash memorizza nella variabile ``\textsl{IPAddr}'' l'indirizzo IP attuale,
+dopodiché con un ciclo while legge il file e confronta l’IP attuale con quello precedentemente memorizzato nel file che si sta leggendo, se è diverso significa che il 
+Raspberry ha cambiato IP(non è più quello memorizzato nel file) quindi sovrascrive l’indirizzo IP memorizzato precedentemente con quello attuale, quindi manda un e-mail all' 
+indirizzo precedentemente impostato con l’IP attuale, altrimenti non fa niente.
+\begin{lstlisting}[language=Python,frame=single,caption=Script bash,captionpos=t,label=bash_code]
+    import socket
+    # memorizzo l'hostname nella variabile     
+    hostname = socket.gethostname()
+    # memorizzo nella variabile l'indirizzo IP dell' "hostname"              
+    IPAddr = socket.gethostbyname(hostname)     
+    f= open("/home/pi/Desktop/ip.txt", "r")
+    ipSaved = f.readline()
+    # se l'IP salvato nel file "ip.txt" non corrispinde all'indirizzo IP memorizzato nella variabile, modifico il file e mando l'email
+    if ipSaved != IPAddr:
+        f = open("/home/pi/Desktop/ip.txt","w")
+        f.write(IPAddr)
+        # funzione che invia l'email con l'indirizzo IP attuale
+        sendEmail(IPAddr)
+\end{lstlisting}
+Dopodiché è stato testato il funzionamento del sensore di movimento eseguendo il codice mostrato nel Listato~\ref{sensor_code} il quale, dopo aver importato le 
+opportune librerie, testa la connessione al sensore, se va a buon fine verrà semplicemente stampato a video la prossimità dell'oggetto rilevato.
+\begin{lstlisting}[language=Python,frame=single,caption=Codice sensore,captionpos=t,label=sensor_code]
+#!/usr/bin/python3
+import qwiic_proximity
+import time
+import sys
+print("\nSparkFun Proximity Sensor VCN4040 Example 1\n")
+oProx = qwiic_proximity.QwiicProximity()
+if oProx.isConnected() == False:
+    print("The Qwiic Proximity device isn't connected to the system. Please check your connection", \
+        file=sys.stderr)
+    return
+oProx.begin()
+
+while True:
+    proxValue = oProx.getProximity()
+    print("Proximity Value: %d" % proxValue)
+    time.sleep(.4)
+\end{lstlisting}
+Per testare il funzionamento della fotocamera è stato eseguito il codice mostrato nel Listato~\ref{code_camera} il quale, dopo aver importato le opportune librerie 
+esegue una sleep di 5 secondi(in modo da dare il tempo ai sensori di luce della fotocamera di stabilizzarsi)scatta una foto e la memorizza nel Desktop .
+\begin{lstlisting}[language=Python,frame=single,caption=Codice Python che scatta la foto,captionpos=t,label=code_camera]
+#!/usr/bin/python3
+from picamera import PiCamera
+from time import sleep
+camera = PiCamera()
+camera.start_preview()
+#attendo 5 secondi per dare il tempo ai sensori di luce della  
+#fotocamera di stabilizzarsi, quindi scatto la foto con il comando
+#nella riga 10
+sleep(5)
+camera.capture('/home/pi/Desktop/image.jpg')
+camera.stop_preview()
+\end{lstlisting}
+Appurato il funzionamento dei due componenti, si può proseguire creando i vari database su AWS come mostrato nella Sezione~\ref{sec:phases_of_development}. 
+Con il codice a seguire sono state inserite alcune immagini nel database Amazon S3
+\begin{lstlisting}[language=Python,frame=single]
+#!/usr/bin/python
+import boto3
+s3 = boto3.resource('s3')
+# Get list of objects for indexing
+images=[('aldo.jpg','Aldo Bushaj'),
+      ('nino.jpg','Antonino Bushaj'),
+      ('silvestro.jpg','Silvestro Frisullo'),
+      ('vlad.jpg','Vlad Axinte'),
+      ('florian.jpg','Florian Karici'),
+      ('supermario.jpg','Super Mario')
+      ]
+
+# Iterate through list to upload objects to S3   
+for image in images:
+    file = open(image[0],'rb')
+    ret = s3.Bucket("images-sender").put_object(Key=image[0], Body=file, Metadata={'FullName':image[1]})
+\end{lstlisting}
+specificando per ognuno, nei rispettivi Metadata, il nome seguito dal cognome.
+A questo punto, con il codice nel Listato~\ref{index_code}, si procede inserendo i volti presenti in Amazon S3 prima nella collection di Amazon Rekognition, con il codice
+
+\begin{lstlisting}[language=Python,frame=single,caption=Codice inserimento volti in DynamoDB e collection,captionpos=t,label=index_code]
+def update_index(tableName,faceId, fullName):
+    response = dynamodb.put_item(
+    TableName=tableName,
+    Item={
+        'RekognitionId': {'S': faceId},
+        'FullName': {'S': fullName}
+        }
+    )
+def index_faces(bucket, key, collection_id, attributes=(), region="eu-central-1"):
+    # indica se tutte le immagini sono state caricate correttamente su dynamodb
+    status = True 
+    for index in range(0,len(key)):
+		rekognition = boto3.client("rekognition", region)
+		response = rekognition.index_faces(
+			Image={
+				"S3Object": {
+					"Bucket": bucket,
+					"Name": key[index],
+				}
+			},
+			CollectionId=collection_id,
+			ExternalImageId=key[index],
+			DetectionAttributes=attributes,
+		)
+		if response['ResponseMetadata']['HTTPStatusCode'] == 200:
+			faceId = response['FaceRecords'][0]['Face']['FaceId']
+		
+			# head_object ritorna esclusivamente i matadati dell'oggetto indicato all'interno del bucket specificato
+			ret = s3.head_object(Bucket=bucket,Key=key[index])
+			personFullName = ret['Metadata']['fullname']
+			print("Uploaded in collection : "+personFullName)
+   
+			update_index('sender_id',faceId,personFullName)
+		else:
+			status = False
+		
+    return status
+
+if index_faces(BUCKET, all_key, COLLECTION):
+	print("Images succesfully uploaded")
+else: 
+    print("ERRORR.... Images not uploaded")
+
+\end{lstlisting}
+della funzione ``\textsl{index\_faces}'', il quale una volta recuperata l'immagine del volto precedentemente caricata nel database Amazon S3, con la funzione nativa di 
+Amazon Rekognition ``\textsl{rekognition.index\_faces}'', per ciascun volto, viene calcolato l'ID corrispondente e quindi memorizzato nella collection.
+Succesivamente, si aggiunge il volto appena inserito nella collection anche nella tabella DynamoDB, per far ciò viene usato il metodo 
+``\textsl{update\_index}'' il quale una volta eseguito, inserisce nella tabella il corrispondente ID volto nel campo RekognitionId e il nome seguito dal cognome,
+(recuperati dal Metadata della foto) nel campo FullName. 
+
+Verificato il funzionamento del codice appena descritto, non rimane altro che addattare le due funzioni ad un'esecuzione automatica dei metodi, ogni qualvolta viene
+ricevuta nuova posta.

@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>12</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>636</x>
+      <y>0</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>System</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>156</x>
+      <y>12</y>
+      <w>72</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Chef</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>108</y>
+      <w>36</w>
+      <h>1260</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1030.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>684</x>
+      <y>108</y>
+      <w>36</w>
+      <h>1260</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1030.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>156</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Foglio Riepilogativo</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>132</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+1. Crea Foglio Riepilogativo (evento)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>72</x>
+      <y>204</y>
+      <w>732</w>
+      <h>1140</h>
+    </coordinates>
+    <panel_attributes>LOOP(n)
+fg=red
+layer=-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>264</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+2. Aggiunge Un Compito (Procedura)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>288</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Nuova Scheda Compito
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>120</x>
+      <y>624</y>
+      <w>636</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>ALT
+--
+
+
+
+-.
+
+
+
+
+-.
+
+
+fg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>84</x>
+      <y>348</y>
+      <w>708</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>LOOP(n)
+bg=none
+fg=red
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>108</x>
+      <y>588</y>
+      <w>660</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>LOOP(n)
+fg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>360</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+3. Ordina l’elenco (oldPosition, newPosition)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>384</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Scheda Compito Ordinato
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>648</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+5. Assegna Turno al compito (dataInizio, dataFine, ?cuoco)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>672</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Assegna turno al compito
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>924</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+6. Assegna Una Stima Del Tempo (tempo)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>948</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Mostra Scheda Del Compito Modificata
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>1020</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+7. Assegna Porzioni Da Preparare (porzioni)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>1044</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Mostra Scheda Del Compito Modificata
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>108</x>
+      <y>912</y>
+      <w>660</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>LOOP(n)
+bg=none
+fg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>1164</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+8. Salva Compito ()</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>1188</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Ritorna Foglio Riepilogativo Modificato</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>732</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+5a.1 Elimina turno(turno)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>756</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Elimina il turno selezionato dal compito in uso
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>468</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+4. Visualizza un compito (compito)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>492</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Mostra Scheda Del Compito
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>84</x>
+      <y>240</y>
+      <w>708</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>LOOP(n)
+bg=none
+fg=red
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>84</x>
+      <y>444</y>
+      <w>708</w>
+      <h>888</h>
+    </coordinates>
+    <panel_attributes>LOOP(n)
+bg=none
+fg=red
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>108</x>
+      <y>1008</y>
+      <w>660</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>LOOP(n)
+bg=none
+fg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>816</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+5b.1. Modifica Turno(dataInizio?, dataFine?, ?cuoco)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>840</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Ritorna turno modificato al compito
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>1236</y>
+      <w>540</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+8b. Elimina Compito()</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>1260</y>
+      <w>540</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Ritorna Il Foglio Riepilogativo Modificato
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>108</x>
+      <y>1116</y>
+      <w>660</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>OPT
+bg=none
+fg=magenta
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>120</x>
+      <y>1152</y>
+      <w>636</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>ALT
+--
+
+
+-.
+fg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>96</x>
+      <y>552</y>
+      <w>684</w>
+      <h>552</h>
+    </coordinates>
+    <panel_attributes>LOOP(n)
+bg=none
+fg=red
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

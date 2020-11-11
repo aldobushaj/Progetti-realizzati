@@ -1,0 +1,444 @@
+#SETTIMANA 1
+	VEN
+		1 : presentazione
+		2 : presentazione
+		3 : ling_markup
+		4 : acq_elab_suono
+		5 : proj_man
+		6 : ling_markup
+		7 : acq_elab_suono
+		8 : proj_man
+	SAB
+		1 : ling_markup
+		2 : acq_elab_suono
+		3 : acq_elab_suono
+		4 : ling_markup
+		5 : ling_markup
+#SETTIMANA 2
+	VEN
+		1 : ling_markup
+		2 : ling_markup
+		3 : proj_man
+		4 : acq_elab_suono
+		5 : acq_elab_suono
+		6 : ling_markup
+		7 : proj_man
+		8 : ling_markup
+	SAB
+		1 : ling_markup
+		2 : ling_markup
+		3 : ac_elab_img
+		4 : ac_elab_img
+		5 : ling_markup
+#SETTIMANA 3
+	VEN
+		1 : ling_markup
+		2 : ling_markup
+		3 : proj_man
+		4 : proj_man
+		5 : ling_markup
+		6 : acq_elab_suono
+		7 : ling_markup
+		8 : acq_elab_suono
+	SAB
+		1 : proj_man
+		2 : acq_elab_suono
+		3 : proj_man
+		4 : proj_man
+		5 : acq_elab_suono
+#SETTIMANA 4
+	VEN
+		1 : ac_elab_img
+		2 : ict_paradig_prog
+		3 : prog_basi_dati
+		4 : prog_basi_dati
+		5 : prog_basi_dati
+		6 : ict_paradig_prog
+		7 : ac_elab_img
+		8 : ac_elab_img
+	SAB
+		1 : ict_paradig_prog
+		2 : ict_paradig_prog
+		3 : ict_paradig_prog
+		4 : ac_elab_img
+		5 : ac_elab_img
+#SETTIMANA 5
+	VEN
+		1 : prog_basi_dati
+		2 : acc_usb_prog_mult
+		3 : acc_usb_prog_mult
+		4 : prog_basi_dati
+		5 : prog_basi_dati
+		6 : prog_basi_dati
+		7 : proj_man
+		8 : proj_man
+	SAB
+		1 : ac_elab_img
+		2 : ac_elab_img
+		3 : proj_man
+		4 : proj_man
+		5 : proj_man
+#SETTIMANA 6
+	VEN
+		1 : ling_markup
+		2 : ling_markup
+		3 : ac_elab_img
+		4 : ac_elab_img
+		5 : acc_usb_prog_mult
+		7 : acc_usb_prog_mult
+		8 : ac_elab_img
+	SAB
+		1 : ris_prog_coll_doc
+		2 : ris_prog_coll_doc
+		3 : ris_umane
+		4 : ris_umane
+#SETTIMANA 7
+	LUN
+		1 : prog_basi_dati
+		2 : ict_paradig_prog
+		3 : acc_usb_prog_mult
+		4 : prog_basi_dati
+		5 : ict_paradig_prog
+		6 : com_pub
+		7 : acc_usb_prog_mult
+		8 : com_pub
+	MAR
+		1 : acc_usb_prog_mult
+		2 : ict_paradig_prog
+		3 : acc_usb_prog_mult
+		4 : acc_usb_prog_mult
+		5 : acc_usb_prog_mult
+		7 : ict_paradig_prog
+		8 : ict_paradig_prog
+	MER
+		1 : ris_umane
+		2 : com_pub
+		3 : ris_prog_coll_doc
+		4 : ris_umane
+		5 : ris_prog_coll_doc
+		6 : ict_paradig_prog
+		7 : ict_paradig_prog
+		8 : com_pub
+	GIO
+		1 : prog_basi_dati
+		2 : com_pub
+		3 : prog_basi_dati
+		4 : prog_basi_dati
+		5 : ris_prog_coll_doc
+		6 : ris_prog_coll_doc
+		7 : com_pub
+		8 : com_pub
+	VEN
+		1 : ac_elab_img
+		2 : acc_usb_prog_mult
+		3 : ict_paradig_prog
+		4 : ict_paradig_prog
+		5 : acc_usb_prog_mult
+		6 : com_pub
+		7 : com_pub
+		8 : ac_elab_img
+	SAB
+		1 : prog_basi_dati
+		2 : prog_basi_dati
+		3 : ling_markup
+		5 : ling_markup
+#SETTIMANA 8
+	VEN
+		1 : grafica_3D
+		2 : acc_usb_prog_mult
+		3 : prog_basi_dati
+		4 : prog_basi_dati
+		5 : acc_usb_prog_mult
+		6 : grafica_3D
+		7 : grafica_3D
+		8 : grafica_3D
+	SAB
+		1 : grafica_3D
+		2 : grafica_3D
+		3 : grafica_3D
+		4 : grafica_3D
+#SETTIMANA 9
+	VEN
+		1 : grafica_3D
+		2 : ris_umane
+		3 : ris_umane
+		4 : foto_dig
+		5 : foto_dig
+		6 : grafica_3D
+		7 : foto_dig
+		8 : foto_dig
+	SAB
+		1 : amb_svil_lcs
+		2 : foto_dig
+		3 : foto_dig
+		4 : amb_svil_lcs
+		5 : foto_dig
+#SETTIMANA 10
+	VEN
+		1 : amb_svil_lcs
+		2 : ris_prog_coll_doc
+		3 : prog_basi_dati
+		4 : amb_svil_lcs
+		5 : ris_prog_coll_doc
+		6 : amb_svil_lcs
+		8 : prog_basi_dati
+	SAB
+		1 : prog_basi_dati
+		2 : prog_basi_dati
+		3 : foto_dig
+		4 : foto_dig
+		5 : foto_dig
+#SETTIMANA 11
+	VEN
+		1 : marketing_dig
+		2 : com_pub
+		3 : com_pub
+		4 : marketing_dig
+		5 : grafica_3D
+		6 : grafica_3D
+		7 : ris_umane
+		8 : ris_umane
+	SAB
+		1 : com_pub
+		2 : com_pub
+		3 : com_pub
+		4 : amb_svil_lcs
+		5 : amb_svil_lcs
+#SETTIMANA 12
+	VEN
+		1 : ris_prog_coll_doc
+		2 : ris_prog_coll_doc
+		3 : acq_elab_seq_img
+		4 : acq_elab_seq_img
+		5 : ris_umane
+		6 : grafica_3D
+		7 : ris_umane
+		8 : grafica_3D
+	SAB
+		1 : marketing_dig
+		2 : grafica_3D
+		3 : grafica_3D
+		5 : marketing_dig
+#SETTIMANA 13
+	VEN
+		1 : amb_svil_lcs
+		2 : marketing_dig
+		3 : marketing_dig
+		4 : amb_svil_lcs
+		6 : amb_svil_lcs
+		7 : marketing_dig
+		8 : marketing_dig
+	SAB
+		1 : grafica_3D
+		2 : acq_elab_seq_img
+		4 : grafica_3D
+		5 : acq_elab_seq_img
+#SETTIMANA 14
+	VEN
+		1 : acq_elab_seq_img
+		2 : amb_svil_lcs
+		3 : grafica_3D
+		4 : amb_svil_lcs
+		5 : amb_svil_lcs
+		6 : amb_svil_lcs
+		7 : grafica_3D
+		8 : acq_elab_seq_img
+	SAB
+		1 : acq_elab_seq_img
+		2 : acq_elab_seq_img
+		3 : acq_elab_seq_img
+		4 : amb_svil_lcs
+		5 : amb_svil_lcs
+#SETTIMANA 15
+	VEN
+		2 : amb_svil_lcs
+		3 : tec_server_side
+		4 : acq_elab_seq_img
+		5 : tec_server_side
+		6 : acq_elab_seq_img
+		7 : tec_server_side
+		8 : amb_svil_lcs
+	SAB
+		1 : amb_svil_lcs
+		2 : tec_server_side
+		3 : tec_server_side
+		4 : tec_server_side
+		5 : amb_svil_lcs
+#SETTIMANA 16
+	LUN
+		1 : prog_svlp_disp_mob
+		2 : prog_svlp_disp_mob
+		3 : prog_svlp_disp_mob
+		4 : cross_media
+		5 : prog_svlp_disp_mob
+		6 : semiol_multim
+		7 : semiol_multim
+		8 : cross_media
+	MAR
+		1 : prog_svlp_disp_mob
+		2 : tec_server_side
+		3 : prog_svlp_disp_mob
+		4 : tec_server_side
+		5 : tec_server_side
+		6 : tec_server_side
+		7 : semiol_multim
+		8 : semiol_multim
+	MER
+		1 : prog_svlp_disp_mob
+		2 : prog_svlp_disp_mob
+		3 : prog_svlp_disp_mob
+		4 : prog_svlp_disp_mob
+		5 : prog_svlp_disp_mob_2
+		6 : prog_svlp_disp_mob_2
+		7 : prog_svlp_disp_mob_2
+		8 : prog_svlp_disp_mob_2
+	GIO
+		1 : semiol_multim
+		2 : semiol_multim
+		3 : cross_media
+		4 : cross_media
+		5 : cross_media
+		6 : tec_server_side
+		7 : tec_server_side
+		8 : tec_server_side
+	VEN
+		1 : semiol_multim
+		2 : semiol_multim
+		3 : prog_svlp_disp_mob_2
+		4 : prog_svlp_disp_mob_2
+		5 : prog_svlp_disp_mob_2
+		6 : acq_elab_seq_img
+		7 : acq_elab_seq_img
+		8 : acq_elab_seq_img
+	SAB
+		1 : acq_elab_seq_img
+		2 : tec_server_side
+		3 : tec_server_side
+		4 : tec_server_side
+		5 : acq_elab_seq_img
+#SETTIMANA 17
+	VEN
+		1 : vinc_giur_media
+		2 : vinc_giur_media
+		3 : cross_media
+		4 : marketing_dig
+		5 : acq_elab_seq_img
+		6 : cross_media
+		7 : acq_elab_seq_img
+		8 : marketing_dig
+	SAB
+		1 : prog_svlp_disp_mob_2
+		2 : cross_media
+		3 : prog_svlp_disp_mob_2
+		4 : cross_media
+		5 : prog_svlp_disp_mob_2
+#SETTIMANA 18
+	VEN
+		1 : social_media_man
+		2 : gest_qual
+		3 : tecn_str_mark
+		4 : acq_elab_seq_img
+		5 : gest_qual
+		6 : tecn_str_mark
+		7 : social_media_man
+		8 : acq_elab_seq_img
+	SAB
+		1 : tecn_str_mark
+		2 : cross_media
+		3 : tecn_str_mark
+		4 : cross_media
+		5 : tecn_str_mark
+#SETTIMANA 19
+	VEN
+		1 : cross_media
+		3 : social_media_man
+		4 : cross_media
+		5 : cross_media
+		6 : recupero
+		7 : recupero
+		8 : social_media_man
+	SAB
+		1 : prog_graf_des_int
+		2 : prog_graf_des_int
+		3 : str_met_social
+		4 : str_met_social
+		5 : str_met_social
+#SETTIMANA 20
+	VEN
+		2 : vinc_giur_media
+		3 : tecn_str_mark
+		4 : gest_qual
+		5 : vinc_giur_media
+		6 : tecn_str_mark
+		7 : gest_qual
+		8 : tecn_str_mark
+	SAB
+		1 : prog_graf_des_int
+		2 : tecn_str_mark
+		3 : prog_graf_des_int
+		4 : prog_graf_des_int
+		5 : tecn_str_mark
+#SETTIMANA 21
+	VEN
+		1 : tec_server_side
+		2 : cross_media
+		3 : cross_media
+		4 : tec_server_side
+		5 : tec_server_side
+		6 : cross_media
+		7 : tec_server_side
+		8 : cross_media
+	SAB
+		1 : gest_qual
+		2 : str_met_social
+		3 : str_met_social
+		4 : gest_qual
+		5 : str_met_social
+#SETTIMANA 22
+	VEN
+		1 : social_media_man
+		2 : semiol_multim
+		3 : semiol_multim
+		4 : cross_media
+		5 : social_media_man
+		6 : social_media_man
+		7 : cross_media
+		8 : social_media_man
+	SAB
+		1 : vinc_giur_media
+		2 : vinc_giur_media
+		3 : str_met_social
+		4 : vinc_giur_media
+		5 : str_met_social
+#SETTIMANA 23
+	VEN
+		1 : vinc_giur_media
+		2 : vinc_giur_media
+		3 : vinc_giur_media
+		4 : prog_graf_des_int
+		5 : prog_graf_des_int
+		6 : social_media_man
+		7 : social_media_man
+		8 : prog_graf_des_int
+	SAB
+		1 : str_met_social
+		2 : str_met_social
+		3 : str_met_social
+		4 : gest_qual
+		5 : gest_qual
+#SETTIMANA 24
+	VEN
+		1 : prog_graf_des_int
+		2 : social_media_man
+		3 : social_media_man
+		4 : recupero
+		5 : recupero
+		6 : social_media_man
+		7 : social_media_man
+		8 : prog_graf_des_int
+	SAB
+		1 : str_met_social
+		2 : str_met_social
+		3 : gest_qual
+		4 : str_met_social
+		5 : gest_qual

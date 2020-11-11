@@ -1,0 +1,10 @@
+35211214|2019-09-20T20:19:22.985|user2|user1;|Inserisci oggèà+òè+ò+"£$%&/()etto|è+è8966$%$//()/&£%&()()ksnjksauiu7878b|
+36310337|2019-09-20T20:42:01.988|user1|user2;|Inserisci oggetto|Testo|
+11678875|2019-09-20T20:44:22.078|user1|user2;|Inserisci oggetto|Testo|
+33631214|2019-09-20T20:46:41.669|user2|user2;|Inserisci oggetto|Testo|
+33631214|2019-09-20T20:46:41.669|user2|user2;|Inserisci oggetto|Testo|
+12387893|2019-09-20T20:47:00.473|user2|sadasdasdasdsad;|"£$%&/()as;sdvuasduy(;|Inserisci oggetto|
+11302848|2019-09-20T20:47:19.514|user2|user2;|Inserisci oggetto|Testo|
+11302848|2019-09-20T20:47:19.514|user2|user2;|Inserisci oggetto|Testo|
+3489847|2019-09-20T22:44:20.622|user1|user2;|Inserisci oggetto|Testo|
+34703711|2019-09-20T22:50:03.294|user1|user2;|Inserisci oggetto|Testo|

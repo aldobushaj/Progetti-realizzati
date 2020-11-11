@@ -1,0 +1,1 @@
+case when(ID RELOP NUM)read(ID) else read(ID); read(ID)

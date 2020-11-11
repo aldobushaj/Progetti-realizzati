@@ -1,0 +1,10 @@
+read(_x1);
+
+read(y);
+while(_x1 <> y){
+	case when(_x1<y) y:=y-_x1 else _x1:=_x1-y
+};
+print(_x1);
+print(y+100);
+while(_x1>0){_x1:= _x1 -1; print(_x1) }
+//Questo commento viene ignorato

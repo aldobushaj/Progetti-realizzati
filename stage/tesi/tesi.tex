@@ -1,0 +1,92 @@
+\documentclass[a4paper, titlepage]{book}
+\usepackage{frontespizio}
+\usepackage{graphicx}       % per inserire le immagini
+\graphicspath{{../pdf/}{C:\Users\aldob\Documents\tesi\images}}
+
+\usepackage{cite}          % per poter citare
+\usepackage[italian]{babel} %lingua
+\usepackage{url}
+%\usepackage[lighttt]{lmodern}
+%\usepackage{listings}% per inserire codice python
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{fancyhdr}   %linee nell'head dopo la prima pagina di ogni capitolo
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhead[LE,RO]{\bfseries\thepage}
+
+
+
+\usepackage{hyperref}     %per poter cliccare i link
+%\hypersetup{colorlinks=true, citecolor=blue}   % colore capitoli dell'indice
+
+\begin{document}
+
+
+\begin{frontespizio}
+
+\Universita{Torino}
+\Logo[3.5cm]{images/logo universita.png}
+\Dipartimento{INFORMATICA}
+\Corso[Laurea]{Informatica}
+\Titoletto{Tesi di laurea}
+\Titolo{IoT su piattaforma Raspbian/Raspberry:\\
+Sviluppo di una cassetta delle lettere smart
+}
+\Relatore{Prof.~Michele Garetto}
+\Candidato[847091]{Aldo~Bushaj}
+\Annoaccademico{2019-2020}
+
+\end{frontespizio}
+
+
+\tableofcontents
+
+\frontmatter
+\input{abstract.tex}
+\input{ringraziamenti.tex}
+
+
+\mainmatter
+\input{introduzione.tex}
+\input{capitolo2.tex}
+\input{capitolo3.tex}
+\input{capitolo4.tex}
+\input{conclusioni.tex}
+
+
+\backmatter
+\bibliographystyle{plain}
+\bibliography{bibliografia.bib}
+
+\end{document}

@@ -1,0 +1,36 @@
+\begin{thebibliography}{1}
+
+\bibitem{boto3}
+Boto 3 documentation.
+\newblock disponibile all'indirizzo
+  \url{https://boto3.amazonaws.com/v1/documentation/api/latest/index.html}.
+
+\bibitem{cli}
+Aws iot cli on raspberry pi.
+\newblock disponibile all'indirizzo
+  \url{https://iotbytes.wordpress.com/aws-iot-cli-on-raspberry-pi/}, 02 2017.
+
+\bibitem{insiderIntelligence}
+How the internet of things will transform consumerism, enterprises, and
+  governments over the next five years.
+\newblock disponibile all'indirizzo
+  \url{https://www.businessinsider.com/7-27-2018-iot-forecast-book-2018-7?IR=T},
+  2018.
+
+\bibitem{aws}
+Amazon web services reports 45 percent jump in revenue in the fourth quarter.
+\newblock disponibile all'indirizzo
+  \url{https://www.cnbc.com/2019/01/31/aws-earnings-q4-2018.html}, 01 2019.
+
+\bibitem{articoloSicurezza}
+Iot (internet of things): significato, esempi e applicazioni pratiche.
+\newblock disponibile all'indirizzo
+  \url{https://www.internet4things.it/iot-library/internet-of-things-gli-ambiti-applicativi-in-italia/},
+  10 2019.
+
+\bibitem{stroyOFraspberry_Raspbian}
+Pier Calderan.
+\newblock {\em Raspberry Pi: Guida al computer più compatto del mondo.}
+\newblock Apogeo Editore, 2013.
+
+\end{thebibliography}

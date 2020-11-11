@@ -1,0 +1,32 @@
+\chapter{Progetto}
+\label{ch:job_motivation}
+Il progetto sviluppato durante il tirocinio presso l'Universtià degli studi di Torino, con la supervisione del professore Michele Garetto, si pone come obiettivo 
+quello di creare una cassetta delle lettere smart, la quale ogni volta in cui viene ricevuta posta è in grado di avvertire e far interagire l'utente 
+grazie all'invio di e-mail a un specifico indirizzo preimpostato.
+
+Per fare ciò, sono stati utilizzati diversi servizi illustrati nel dettaglio nel seguente paragrafo.
+
+
+\section{Soluzione Proposta}
+\label{sec:solution}
+La soluzione proposta in questa tesi utilizza una ``classica" cassetta delle lettere resa smart grazie all'integrazione di diversi sensori e servizi alla scheda 
+Raspberry Pi 3 Model B, di seguito verrà illustrato il suo funzionamento.
+
+Il soggetto che invia la posta dovrà semplicemente inserire la lettera nel bucalettere, a questo punto vengono innescati una serie di eventi:
+\begin{itemize}
+    \item Grazie al sensore di prossimità Qwiic Proximity Sensor (VCNL4040), in Figura~\ref{photo_sensor}, viene rilevato il passaggio di un'oggetto, la lettera nel 
+    nostro caso, quindi viene scattata una foto con la Raspberry Pi Camera~\ref{photo_camera}.
+    \item Quindi vi è l'interazione con alcuni servizi di AWS(Amazon Web Services), in particolare, la foto appena scattata viene caricata in Amazon S3, questo evento
+    lancia la funzione Lambda la quale verifica se le foto caricata è un volto riconosciuto da Amazon Rekognition e quindi presente in Amazon Dynamodb.
+    \item A questo punto possono verificarsi solo due casi:
+    \begin{itemize}
+        \item Il volto è stato riconosciuto, quindi viene inviata una e-mail che notifica la ricezione di nuova posta con il nome del mittente.
+        \item Il volto non è stato riconosciuto, quindi viene inviata un'e-mail che notifica la ricezione di nuova posta con allegata
+        la foto del mittente.
+    \end{itemize}
+    \item Infine l'utente potrà insierire i volti non riconosciuti da Amazon Rekognition nei database inoltrando l'email ricevuta, inserendo nel corpo dell'e-mail 
+    la parola chiave ADD seguita da nome e cognome con cui si vuole memorizzare il volto. Quindi dopo gli opportuni controlli, i volti inseriti saranno pronti 
+    ad un prossimo eventuale controllo ad essere riconosciuti.
+\end{itemize} 
+
+Tutto il codice e funzionamento nel dettaglio del progetto verrano illustrati nel capitolo ~\ref{ch:development}.

@@ -1,0 +1,8 @@
+40892581|2019-09-20T21:52:04.772|user1|+עטטט+;|Inserisci oggetto|Testo|
+24851186|2019-09-20T21:52:15.590|user1|user2;|Inserisci oggetto|Testo|
+26194788|2019-09-20T21:52:32.256|user1|user2;|Inserisci oggetto|Testo|
+39494146|2019-09-20T22:34:09.175|user1|אטאטייי°אטא;|Inserisci oggetto|Testo|
+44136506|2019-09-20T22:34:17.993|user1|user2;|Inserisci oggetto|Testo|
+3489847|2019-09-20T22:44:20.622|user1|user2;|Inserisci oggetto|Testo|
+13140337|2019-09-20T22:44:42.817|user1|"£$%&/()=)(/&%$;|Inserisci oggetto|Testo|
+34703711|2019-09-20T22:50:03.294|user1|user2;|Inserisci oggetto|Testo|

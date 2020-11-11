@@ -1,0 +1,18 @@
+\chapter{Abstract}
+\label{ch:abstract}
+Oggigiorno tra ufficio, hobby e impegni vari trascorriamo sempre meno tempo a casa, quindi a volte, se si aspetta una lettera importante o semplicemente per
+comodità, l'deale sarebbe che qualcuno o meglio qualcosa avvisi l'utente (il proprietario della cassetta delle lettere) ogni qualvolta viene ricevuta nuova 
+posta informandolo eventualmene anche dell'identità del mittente.
+
+Usando il prototipo sviluppato, quando il mittente inserisce una lettera nel bucalettere, una fotocamera scatta una foto che verrà caricata nel database. A questo
+punto, tramite un'email all'indirizzo precedentemente impostato, l'utente viene notificato dell'avvenuta ricezione di nuova posta indicandone anche l'identità.
+
+Il progetto è stato implementato su una scheda Raspberry-Pi, mentre l'applicazione, è stata scritta usando il linguaggio Python.
+Sono stati utilizzati diversi servizi di AWS (Amazon Web Services) sia per quanto riguarda il riconoscimento facciale che per il caricamento delle foto scattate nel 
+database, i più importanti sono:
+\begin{itemize}
+    \item Amazon Rekognition
+    \item Amazon Simple Storage Service (Amazon S3)
+    \item Amazon DynamoDB
+    \item AWS Lambda 
+\end{itemize} 
