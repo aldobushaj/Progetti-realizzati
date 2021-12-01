@@ -3,7 +3,7 @@
 
 
 * Master’s Degree projects
-  > Progetto Intelligenza Artificiale
+  > Artificial Intelligence project
     * Parte di Micalizi
     * Parte di Pozzato
     * Parte di Torta
@@ -26,6 +26,6 @@
   > Web Technologies project
 
 * Stage
-  > Tesi
+  > Thesis
   
   > Code
