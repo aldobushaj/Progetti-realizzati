@@ -2,7 +2,7 @@
 
 
 
-* Magistrale
+* Master’s Degree projects
   > Progetto Intelligenza Artificiale
     * Parte di Micalizi
     * Parte di Pozzato
@@ -10,22 +10,22 @@
 
 
 
-* Triennale
-  > Progetto Algoritmi
+* Bachelor’s Degree projects
+  > Algorithm project
   
-  > Progetto Database
+  > Database project
   
-  > Progetto LFT
+  > Formal Languages and Compilers project
   
-  > Progetto PROG 3
+  > Programming III project
   
-  > Progetto SAS
+  > Development of Software Applications project
   
-  > Progetto SO
+  > Operating Systems project
   
-  > Progetto Tweb
+  > Web Technologies project
 
 * Stage
   > Tesi
   
-  > Codice
+  > Code
