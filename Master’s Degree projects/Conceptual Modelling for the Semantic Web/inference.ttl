@@ -1,0 +1,1833 @@
+@prefix : <http://www.semanticweb.com/MusicOntology/inference#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.com/MusicOntology/inference> .
+
+<http://www.semanticweb.com/MusicOntology/inference> rdf:type owl:Ontology ;
+                                                      <http://purl.org/dc/elements/1.1/creator> "Aldo Bushaj"@en ;
+                                                      <http://purl.org/dc/elements/1.1/date> "June 2022"@en ;
+                                                      <http://purl.org/dc/elements/1.1/description> "L'ontologia Music rappresenta la la base di conoscenza di un una piattaforma dove è possibile l'acquisto di NFT legati ad opere musicali e la pubblicazione da parte degli artisti, degli NFT di una determianta opera musicale. Questa ontologia incorpora la risorsa FRBR la quale permette di legare gli artisti con le relative opere create, incorpora anche parte del vocabolario FOAF per la rappresentazione di un utente nella piattaforma."@it ;
+                                                      <http://purl.org/dc/elements/1.1/title> "Music Ontology"@en ;
+                                                      <http://www.semanticweb.com/MusicOntology#vann:preferredNamespacePrefix> "MusicOntology"@en ;
+                                                      <http://www.semanticweb.com/MusicOntology#vann:preferredNamespaceUri> "http://www.semanticweb.com/MusicOntology"@en ;
+                                                      rdfs:label "music"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+<http://purl.org/dc/elements/1.1/date> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.com/MusicOntology#vann:preferredNamespacePrefix
+<http://www.semanticweb.com/MusicOntology#vann:preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.com/MusicOntology#vann:preferredNamespaceUri
+<http://www.semanticweb.com/MusicOntology#vann:preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/vocab/frbr/core#creator
+<http://purl.org/vocab/frbr/core#creator> rdf:type owl:ObjectProperty ;
+                                          owl:inverseOf <http://purl.org/vocab/frbr/core#creatorOf> ;
+                                          rdfs:domain <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                          rdfs:range <http://purl.org/vocab/frbr/core#Work> ;
+                                          rdfs:comment "Lega l'entita all'opera, cioè chi realizza quell'opera"@it ;
+                                          rdfs:label "creator"@en .
+
+
+###  http://purl.org/vocab/frbr/core#creatorOf
+<http://purl.org/vocab/frbr/core#creatorOf> rdf:type owl:ObjectProperty ;
+                                            rdfs:domain <http://purl.org/vocab/frbr/core#Work> ;
+                                            rdfs:range <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                            rdfs:comment "Indica da chi è stato creato il brano musciale"@it ;
+                                            rdfs:label "creatorOf"@en .
+
+
+###  http://purl.org/vocab/frbr/core#embodiment
+<http://purl.org/vocab/frbr/core#embodiment> rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf <http://purl.org/vocab/frbr/core#embodimentOf> ;
+                                             rdfs:domain <http://purl.org/vocab/frbr/core#Expression> ;
+                                             rdfs:range <http://purl.org/vocab/frbr/core#Manifestation> ;
+                                             rdfs:comment "L'espressione si materializzazione (embodiment) in una manifestazione."@it ;
+                                             rdfs:label "embodiment"@en .
+
+
+###  http://purl.org/vocab/frbr/core#embodimentOf
+<http://purl.org/vocab/frbr/core#embodimentOf> rdf:type owl:ObjectProperty ;
+                                               rdfs:domain <http://purl.org/vocab/frbr/core#Manifestation> ;
+                                               rdfs:range <http://purl.org/vocab/frbr/core#Expression> ;
+                                               rdfs:comment "Rappresenta la tokenizzazione astratta di un'opera artistica."@it ;
+                                               rdfs:label "embodimentOf"@en .
+
+
+###  http://purl.org/vocab/frbr/core#exemplar
+<http://purl.org/vocab/frbr/core#exemplar> rdf:type owl:ObjectProperty ;
+                                           owl:inverseOf <http://purl.org/vocab/frbr/core#exemplarOf> ;
+                                           rdfs:domain <http://purl.org/vocab/frbr/core#Manifestation> ;
+                                           rdfs:range <http://purl.org/vocab/frbr/core#Item> ;
+                                           rdfs:comment "Il singolo esemplare di una manifestazione è l'item."@it ;
+                                           rdfs:label "exemplar"@en .
+
+
+###  http://purl.org/vocab/frbr/core#exemplarOf
+<http://purl.org/vocab/frbr/core#exemplarOf> rdf:type owl:ObjectProperty ;
+                                             rdfs:domain <http://purl.org/vocab/frbr/core#Item> ;
+                                             rdfs:range <http://purl.org/vocab/frbr/core#Manifestation> ;
+                                             rdfs:comment "L'item è il singolo esemplare di una manifestazione"@it ;
+                                             rdfs:label "exemplarOf"@en .
+
+
+###  http://purl.org/vocab/frbr/core#isAbstracted
+<http://purl.org/vocab/frbr/core#isAbstracted> rdf:type owl:ObjectProperty ;
+                                               owl:inverseOf <http://purl.org/vocab/frbr/core#itIsAnAbstraction> ;
+                                               rdfs:domain <http://purl.org/vocab/frbr/core#Work> ;
+                                               rdfs:range <http://purl.org/vocab/frbr/core#Expression> ;
+                                               rdfs:comment "Indica l'opera in cosa si astrae (espressione)"@it ;
+                                               rdfs:label "isAbstracted"@en .
+
+
+###  http://purl.org/vocab/frbr/core#itIsAnAbstraction
+<http://purl.org/vocab/frbr/core#itIsAnAbstraction> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <http://purl.org/vocab/frbr/core#Expression> ;
+                                                    rdfs:range <http://purl.org/vocab/frbr/core#Work> ;
+                                                    rdfs:comment "Indica l'opera che quell'espressione sta astraendo."@it ;
+                                                    rdfs:label "itIsAnAbstraction"@en .
+
+
+###  http://purl.org/vocab/frbr/core#owener
+<http://purl.org/vocab/frbr/core#owener> rdf:type owl:ObjectProperty ;
+                                         owl:inverseOf <http://purl.org/vocab/frbr/core#owenerOf> ;
+                                         rdfs:domain <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                         rdfs:range <http://purl.org/vocab/frbr/core#Item> ;
+                                         rdfs:comment "Indica quali item possiede l'entità responsabile"@it ;
+                                         rdfs:label "owener"@en .
+
+
+###  http://purl.org/vocab/frbr/core#owenerOf
+<http://purl.org/vocab/frbr/core#owenerOf> rdf:type owl:ObjectProperty ;
+                                           rdfs:domain <http://purl.org/vocab/frbr/core#Item> ;
+                                           rdfs:range <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                           rdfs:comment "Indica da quale entità responsabilel'item è posseduto"@it ;
+                                           rdfs:label "owenerOf"@en .
+
+
+###  http://purl.org/vocab/frbr/core#producer
+<http://purl.org/vocab/frbr/core#producer> rdf:type owl:ObjectProperty ;
+                                           owl:inverseOf <http://purl.org/vocab/frbr/core#producerOf> ;
+                                           rdfs:domain <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                           rdfs:range <http://purl.org/vocab/frbr/core#Manifestation> ;
+                                           rdfs:comment "Indica quale manifestazione l'entità responsabile ha prodotto"@it ;
+                                           rdfs:label "producer"@en .
+
+
+###  http://purl.org/vocab/frbr/core#producerOf
+<http://purl.org/vocab/frbr/core#producerOf> rdf:type owl:ObjectProperty ;
+                                             rdfs:domain <http://purl.org/vocab/frbr/core#Manifestation> ;
+                                             rdfs:range <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                             rdfs:comment "Indica la manifestazione da quale entità responsabile è stata prodotta"@it ;
+                                             rdfs:label "producerOf"@en .
+
+
+###  http://purl.org/vocab/frbr/core#realizer
+<http://purl.org/vocab/frbr/core#realizer> rdf:type owl:ObjectProperty ;
+                                           owl:inverseOf <http://purl.org/vocab/frbr/core#realizerOf> ;
+                                           rdfs:domain <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                           rdfs:range <http://purl.org/vocab/frbr/core#Expression> ;
+                                           rdfs:comment "Indica l'espressione realizzata dall'entità responsabile"@it ;
+                                           rdfs:label "realizer"@en .
+
+
+###  http://purl.org/vocab/frbr/core#realizerOf
+<http://purl.org/vocab/frbr/core#realizerOf> rdf:type owl:ObjectProperty ;
+                                             rdfs:domain <http://purl.org/vocab/frbr/core#Expression> ;
+                                             rdfs:range <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                             rdfs:comment "Indica da quale entità responsabile è stata realizzata l'espressione"@it ;
+                                             rdfs:label "realizerOf"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/partof.owl#hasPart
+<http://www.ontologydesignpatterns.org/cp/owl/partof.owl#hasPart> rdf:type owl:ObjectProperty ;
+                                                                  owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> ;
+                                                                  rdfs:domain <http://www.semanticweb.com/MusicOntology#Album> ;
+                                                                  rdfs:range <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                                  rdfs:comment "Relazione che lega l'album al brano musicale. Indica quindi da quali brani musicali è composto l'album"@it ;
+                                                                  rdfs:label "hasPart"@en ,
+                                                                             "èCompostoDa"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf
+<http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:domain <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                                   rdfs:range <http://www.semanticweb.com/MusicOntology#Album> ;
+                                                                   rdfs:comment "Relazione che lega il brano musicale all'album a cui appartiene."@it ;
+                                                                   rdfs:label "faParteDi"@it ,
+                                                                              "isPartOf"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#albumOf
+<http://www.semanticweb.com/MusicOntology#albumOf> rdf:type owl:ObjectProperty ;
+                                                   owl:inverseOf <http://www.semanticweb.com/MusicOntology#hasAlbum> ;
+                                                   rdfs:domain <http://www.semanticweb.com/MusicOntology#Album> ;
+                                                   rdfs:range <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                                   rdfs:comment "Indica a quale artista appartiene un determinato album"@it ;
+                                                   rdfs:label "albumDi"@it ,
+                                                              "albumOf"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#composedBy
+<http://www.semanticweb.com/MusicOntology#composedBy> rdf:type owl:ObjectProperty ;
+                                                      rdfs:subPropertyOf <http://purl.org/vocab/frbr/core#creatorOf> ;
+                                                      owl:inverseOf <http://www.semanticweb.com/MusicOntology#composes> ;
+                                                      rdfs:domain <http://www.semanticweb.com/MusicOntology#Composition> ;
+                                                      rdfs:range <http://www.semanticweb.com/MusicOntology#Composer> ;
+                                                      rdfs:comment "Lega la composizione con il compositore. Indica dunque da chi è stato composta una composizione"@it ;
+                                                      rdfs:label "composedBy"@en ,
+                                                                 "compostaDa"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#composes
+<http://www.semanticweb.com/MusicOntology#composes> rdf:type owl:ObjectProperty ;
+                                                    rdfs:subPropertyOf <http://purl.org/vocab/frbr/core#creator> ;
+                                                    rdfs:domain <http://www.semanticweb.com/MusicOntology#Composer> ;
+                                                    rdfs:range <http://www.semanticweb.com/MusicOntology#Composition> ;
+                                                    owl:propertyDisjointWith <http://www.semanticweb.com/MusicOntology#sing> ;
+                                                    rdfs:comment "Artista compositore che compone un brano musciale"@it ;
+                                                    rdfs:label "compone"@it ,
+                                                               "composes"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#consistOf
+<http://www.semanticweb.com/MusicOntology#consistOf> rdf:type owl:ObjectProperty ;
+                                                     owl:inverseOf <http://www.semanticweb.com/MusicOntology#formAGroup> ;
+                                                     rdfs:domain <http://www.semanticweb.com/MusicOntology#Group> ;
+                                                     rdfs:range <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                     rdfs:comment "Specifica da quali artisti è composto il gruppo"@it ;
+                                                     rdfs:label "consistOf"@en ,
+                                                                "formatoDa"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#containedInLibrary
+<http://www.semanticweb.com/MusicOntology#containedInLibrary> rdf:type owl:ObjectProperty ;
+                                                              owl:inverseOf <http://www.semanticweb.com/MusicOntology#libraryContains> ;
+                                                              rdfs:domain <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                              rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> ;
+                                                              rdfs:comment "Il token di un'opera è contenuto in una libreria musicale."@it ;
+                                                              rdfs:label "containedInLibrary"@en ,
+                                                                         "contenutoInLibreria"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#featuring
+<http://www.semanticweb.com/MusicOntology#featuring> rdf:type owl:ObjectProperty ,
+                                                              owl:TransitiveProperty ;
+                                                     rdfs:domain <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                     rdfs:range <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                     rdfs:comment "Lega più artisti che collaborano nella realizzazione di una canzone(featuring)"@it ;
+                                                     rdfs:label "collabora"@it ,
+                                                                "featuring"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#formAGroup
+<http://www.semanticweb.com/MusicOntology#formAGroup> rdf:type owl:ObjectProperty ;
+                                                      rdfs:domain <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                      rdfs:range <http://www.semanticweb.com/MusicOntology#Group> ;
+                                                      rdfs:comment "Lega l'artista al gruppo musicale a cui appartiene"@it ;
+                                                      rdfs:label "formAGroup"@en ,
+                                                                 "forma"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#groupSing
+<http://www.semanticweb.com/MusicOntology#groupSing> rdf:type owl:ObjectProperty ;
+                                                     rdfs:subPropertyOf <http://purl.org/vocab/frbr/core#creator> ;
+                                                     owl:inverseOf <http://www.semanticweb.com/MusicOntology#singedByGroup> ;
+                                                     rdfs:domain <http://www.semanticweb.com/MusicOntology#Group> ;
+                                                     rdfs:range <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                     rdfs:comment "Gruppo musicale che canta una canzone"@it ;
+                                                     rdfs:label "groupSing"@en ,
+                                                                "gruppoCanta"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#hasAlbum
+<http://www.semanticweb.com/MusicOntology#hasAlbum> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                                    rdfs:range <http://www.semanticweb.com/MusicOntology#Album> ;
+                                                    rdfs:comment "Indica quale album e posseduto da un artista o un gruppo composto da più artisti"@it ;
+                                                    rdfs:label "haAlbum"@it ,
+                                                               "hasAlbum"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#hasGenre
+<http://www.semanticweb.com/MusicOntology#hasGenre> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                    rdfs:range <http://www.semanticweb.com/MusicOntology#Genre> ;
+                                                    rdfs:comment "Proprietà che indica il genere della canzone"@it ;
+                                                    rdfs:label "hasGenre"@en ,
+                                                               "èDiGenere"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#hasLibrary
+<http://www.semanticweb.com/MusicOntology#hasLibrary> rdf:type owl:ObjectProperty ;
+                                                      owl:inverseOf <http://www.semanticweb.com/MusicOntology#libraryOf> ;
+                                                      rdfs:domain <http://www.semanticweb.com/MusicOntology#User> ;
+                                                      rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> ;
+                                                      rdfs:comment "Proprietà che indica la libreria musicale posseduta da un determianto utente"@it ;
+                                                      rdfs:label "haLibreria"@it ,
+                                                                 "hasLibrary"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#hasSongs
+<http://www.semanticweb.com/MusicOntology#hasSongs> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <http://www.semanticweb.com/MusicOntology#Genre> ;
+                                                    rdfs:range <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                    rdfs:comment "Relazione mi permette di determinare quali brani musicali appartengono ad un determinato genere musicale."@it ;
+                                                    rdfs:label "haCanzoni"@it ,
+                                                               "hasSongs"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#hasToken
+<http://www.semanticweb.com/MusicOntology#hasToken> rdf:type owl:ObjectProperty ;
+                                                    owl:inverseOf <http://www.semanticweb.com/MusicOntology#tokenOfUser> ;
+                                                    rdfs:domain <http://www.semanticweb.com/MusicOntology#User> ;
+                                                    rdfs:range <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                    rdfs:comment "Indica quali token un utente possiede"@it ;
+                                                    rdfs:label "haToken"@it ,
+                                                               "hasToken"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#libraryContains
+<http://www.semanticweb.com/MusicOntology#libraryContains> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> ;
+                                                           rdfs:range <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                           rdfs:comment "Una libreria musicale contiene un token opera, che può essere un album, un brano musicale o una composizione."@it ;
+                                                           rdfs:label "libraryContains"@en ,
+                                                                      "libreriaContiene"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#libraryHas
+<http://www.semanticweb.com/MusicOntology#libraryHas> rdf:type owl:ObjectProperty ;
+                                                      rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> ;
+                                                      rdfs:range <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                      owl:propertyChainAxiom ( <http://www.semanticweb.com/MusicOntology#libraryContains>
+                                                                               <http://www.semanticweb.com/MusicOntology#tokenAlbumContains>
+                                                                             ) ;
+                                                      rdfs:comment "Property chain: se una libreria contiene un token opera e questo token opera è un album, l'album a sua volta conterra un token brano musicale, quindi inferiamo che la libreria musicale HA quel/i brano/i musicale/i."@it ;
+                                                      rdfs:label "libraryHas"@en ,
+                                                                 "libreriaHa"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#libraryOf
+<http://www.semanticweb.com/MusicOntology#libraryOf> rdf:type owl:ObjectProperty ,
+                                                              owl:FunctionalProperty ;
+                                                     rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> ;
+                                                     rdfs:range <http://www.semanticweb.com/MusicOntology#User> ;
+                                                     rdfs:comment "Indica a chi appartiene la libreria musicale"@it ;
+                                                     rdfs:label "libraryOf"@en ,
+                                                                "libreriaDi"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#sing
+<http://www.semanticweb.com/MusicOntology#sing> rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf <http://purl.org/vocab/frbr/core#creator> ;
+                                                owl:inverseOf <http://www.semanticweb.com/MusicOntology#singedBy> ;
+                                                rdfs:domain <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                rdfs:range <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                rdfs:comment "Artista (solista o di gruppo) che canta la melodia principale di un brano musicale"@it ;
+                                                rdfs:label "canta"@it ,
+                                                           "sing"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#singedBy
+<http://www.semanticweb.com/MusicOntology#singedBy> rdf:type owl:ObjectProperty ;
+                                                    rdfs:subPropertyOf <http://purl.org/vocab/frbr/core#creatorOf> ;
+                                                    rdfs:domain <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                    rdfs:range <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                    rdfs:comment "Ci dice da chi è stato cantato un brano musciale"@it ;
+                                                    rdfs:label "cantataDa"@it ,
+                                                               "singedBy"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#singedByGroup
+<http://www.semanticweb.com/MusicOntology#singedByGroup> rdf:type owl:ObjectProperty ;
+                                                         rdfs:subPropertyOf <http://purl.org/vocab/frbr/core#creatorOf> ;
+                                                         rdfs:domain <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                         rdfs:range <http://www.semanticweb.com/MusicOntology#Group> ;
+                                                         rdfs:comment "Relazione che lega la canzone con il gruppo musicale, quindi chi canta quella canzone"@it ;
+                                                         rdfs:label "cantataDaGruppo"@it ,
+                                                                    "singedByGroup"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#tokenAlbumContains
+<http://www.semanticweb.com/MusicOntology#tokenAlbumContains> rdf:type owl:ObjectProperty ;
+                                                              owl:inverseOf <http://www.semanticweb.com/MusicOntology#tokenSongContainedIn> ;
+                                                              rdfs:domain <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                              rdfs:range <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                              rdfs:comment "Relazione utilizzata solo nel caso degli album. In questo specifico caso un album contiene a sua volta il token delle canzoni."@it ;
+                                                              rdfs:label "tokenAlbumContiene"@it ,
+                                                                         "tokenContains"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#tokenOfUser
+<http://www.semanticweb.com/MusicOntology#tokenOfUser> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                       rdfs:range <http://www.semanticweb.com/MusicOntology#User> ;
+                                                       rdfs:comment "Indica uno specifico token di una canzone a quale utente appartiene"@it ;
+                                                       rdfs:label "tokenDi"@it ,
+                                                                  "tokenOfUser"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#tokenSongContainedIn
+<http://www.semanticweb.com/MusicOntology#tokenSongContainedIn> rdf:type owl:ObjectProperty ;
+                                                                rdfs:domain <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                                rdfs:range <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                                rdfs:comment "Relazione che indica i brani contenuti nel token dell'album"@it ;
+                                                                rdfs:label "tokenCanzoneContenutaIn"@it ,
+                                                                           "tokenSongContainedIn"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.com/MusicOntology#artistFullName
+<http://www.semanticweb.com/MusicOntology#artistFullName> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:domain <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                          rdfs:range xsd:string ;
+                                                          rdfs:comment "Nome artista completo (nome e cognome)"@it ;
+                                                          rdfs:label "artist Full Name"@en ,
+                                                                     "nomeArtista Completo"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#artistNationality
+<http://www.semanticweb.com/MusicOntology#artistNationality> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:domain <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                             rdfs:range xsd:string ;
+                                                             rdfs:comment "Indica la nazionalità degli artisti"@it ;
+                                                             rdfs:label "artistNationality"@en ,
+                                                                        "nazionalità Artista"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#birthDate
+<http://www.semanticweb.com/MusicOntology#birthDate> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:domain <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                     rdfs:range xsd:string ;
+                                                     rdfs:comment "Indica la data di nascita di un artista"@it ;
+                                                     rdfs:label "birthDate"@en ,
+                                                                "data Nascita"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#deathDate
+<http://www.semanticweb.com/MusicOntology#deathDate> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:domain <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                     rdfs:range xsd:integer ;
+                                                     rdfs:comment "Indica la data di morte di un artista"@it ;
+                                                     rdfs:label "data Morte"@it ,
+                                                                "deathDate"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#exemplarNumber
+<http://www.semanticweb.com/MusicOntology#exemplarNumber> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:domain <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                          rdfs:range xsd:nonNegativeInteger ;
+                                                          rdfs:comment "Ogni opera musicale ha una serie di token corrispondenti che può essere limitata o meno. Nel casio sia limitata abbiamo un numero limitato di token per quella determinata opera. Questo attributo indica il numero di serie, con valore 1 indica la prima copia della serie, 2 la seconda copia della serie, ecc."@it ;
+                                                          rdfs:label "esemplareNumero"@it ,
+                                                                     "exemplarNumber"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#idToken
+<http://www.semanticweb.com/MusicOntology#idToken> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:domain <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                   rdfs:range xsd:integer ;
+                                                   rdfs:comment "Identificativo univoco del NFT sulla blockchain"@it ;
+                                                   rdfs:label "idToken"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#nftName
+<http://www.semanticweb.com/MusicOntology#nftName> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:domain <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                   rdfs:range xsd:string ;
+                                                   rdfs:comment "Indica il nome del NFT"@it ;
+                                                   rdfs:label "nftName"@en ,
+                                                              "nome NFT"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#nftValue
+<http://www.semanticweb.com/MusicOntology#nftValue> rdf:type owl:DatatypeProperty ;
+                                                    rdfs:subPropertyOf owl:topDataProperty ;
+                                                    rdfs:domain <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                    rdfs:range xsd:nonNegativeInteger ;
+                                                    rdfs:comment "Indica il valore in EUR del token"@it ;
+                                                    rdfs:label "nftValue"@en ,
+                                                               "valore NFT"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#stageName
+<http://www.semanticweb.com/MusicOntology#stageName> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:domain <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                     rdfs:range xsd:string ;
+                                                     rdfs:comment "Nome d'arte dell'artista"@it ;
+                                                     rdfs:label "nome d'arte"@it ,
+                                                                "stageName"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#surnameUser
+<http://www.semanticweb.com/MusicOntology#surnameUser> rdf:type owl:DatatypeProperty ;
+                                                       rdfs:subPropertyOf owl:topDataProperty ;
+                                                       rdf:type owl:FunctionalProperty ;
+                                                       rdfs:domain <http://www.semanticweb.com/MusicOntology#User> ;
+                                                       rdfs:range xsd:string ;
+                                                       rdfs:comment "Indica il cognome dell'utente registrato nella piattaforma"@it ;
+                                                       rdfs:label "cognome Utente"@it ,
+                                                                  "surname_User"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#userName
+<http://www.semanticweb.com/MusicOntology#userName> rdf:type owl:DatatypeProperty ,
+                                                             owl:FunctionalProperty ;
+                                                    rdfs:domain <http://www.semanticweb.com/MusicOntology#User> ;
+                                                    rdfs:range xsd:string ;
+                                                    rdfs:comment "Indica il nome dell'utente registrato nella piattaforma"@it ;
+                                                    rdfs:label "nome Utente"@it ,
+                                                               "user Name"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/vocab/frbr/core#CorporateBody
+<http://purl.org/vocab/frbr/core#CorporateBody> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                                owl:disjointWith <http://purl.org/vocab/frbr/core#Person> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Composer> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                rdfs:comment "La classe ente rappresenta organizzazioni o gruppi di individui, identificati da un nome"@it ;
+                                                rdfs:label "Corporate Body"@en ,
+                                                           "Ente"@it .
+
+
+###  http://purl.org/vocab/frbr/core#Expression
+<http://purl.org/vocab/frbr/core#Expression> rdf:type owl:Class ;
+                                             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty <http://purl.org/vocab/frbr/core#realizerOf> ;
+                                                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                   owl:onClass <http://purl.org/vocab/frbr/core#ResponsibleEntity>
+                                                                 ] ;
+                                             rdfs:comment """È un’entità astratta, corrisponde alla forma intellettuale (o artistica) che l’opera assume per poter essere comunicata ad altri (testo, musica, immagine, digitalizzazione, ecc.).
+In particolare viene astratta l'opera, rendendo possibile l'acquisto da parte dall'utente del token corrispondente al brano musicale."""@it ;
+                                             rdfs:label "Espressione"@it ,
+                                                        "Expression"@en .
+
+
+###  http://purl.org/vocab/frbr/core#Item
+<http://purl.org/vocab/frbr/core#Item> rdf:type owl:Class ;
+                                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://purl.org/vocab/frbr/core#owenerOf> ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass <http://purl.org/vocab/frbr/core#ResponsibleEntity>
+                                                           ] ;
+                                       rdfs:subClassOf <http://purl.org/vocab/frbr/core#Manifestation> ;
+                                       rdfs:comment "Corrisponde al singolo esemplare in cui si materializza una manifestazione."@it ;
+                                       rdfs:label "Item"@en ,
+                                                  "Item"@it .
+
+
+###  http://purl.org/vocab/frbr/core#Manifestation
+<http://purl.org/vocab/frbr/core#Manifestation> rdf:type owl:Class ;
+                                                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty <http://purl.org/vocab/frbr/core#producerOf> ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass <http://purl.org/vocab/frbr/core#ResponsibleEntity>
+                                                                    ] ;
+                                                rdfs:comment "È un’entità concreta, corrisponde alla materializzazione dell’espressione dell'opera in una determinata forma (cartacea, magnetica, elettronica, ecc.), che viene rappresentata dall'item."@it ;
+                                                rdfs:label "Manifestation"@en ,
+                                                           "Manifestazione"@it .
+
+
+###  http://purl.org/vocab/frbr/core#Person
+<http://purl.org/vocab/frbr/core#Person> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                         owl:disjointWith <http://www.semanticweb.com/MusicOntology#Group> ;
+                                         rdfs:comment "La classe Persona rappresenta individui che agiscono come singolo"@it ;
+                                         rdfs:label "Person"@en ,
+                                                    "Persona"@it .
+
+
+###  http://purl.org/vocab/frbr/core#ResponsibleEntity
+<http://purl.org/vocab/frbr/core#ResponsibleEntity> rdf:type owl:Class ;
+                                                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://purl.org/vocab/frbr/core#creator> ;
+                                                                          owl:someValuesFrom <http://purl.org/vocab/frbr/core#Work>
+                                                                        ] ;
+                                                    owl:disjointUnionOf ( <http://purl.org/vocab/frbr/core#CorporateBody>
+                                                                          <http://purl.org/vocab/frbr/core#Person>
+                                                                        ) ;
+                                                    rdfs:comment "Una classe Entità Responsabile rappresenta i responsabili del contenuto intellettuale o artistico, della produzione e diffusione fisica o della custodia di qualsiasi impresa."@it ;
+                                                    rdfs:label "Entità Responsabile"@it ,
+                                                               "Responsable Entity"@en .
+
+
+###  http://purl.org/vocab/frbr/core#Work
+<http://purl.org/vocab/frbr/core#Work> rdf:type owl:Class ;
+                                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://purl.org/vocab/frbr/core#creatorOf> ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass <http://purl.org/vocab/frbr/core#ResponsibleEntity>
+                                                           ] ;
+                                       owl:disjointUnionOf ( <http://www.semanticweb.com/MusicOntology#Album>
+                                                             <http://www.semanticweb.com/MusicOntology#Composition>
+                                                             <http://www.semanticweb.com/MusicOntology#Song>
+                                                           ) ;
+                                       rdfs:comment "È un’entità astratta, rappresenta il contenuto intellettuale (o artistico) come si è formato nella mente del suo autore. Si distingue dalle altre opere perché il suo contenuto intellettuale (o artistico) è diverso da quello delle altre opere."@it ;
+                                       rdfs:label "(Work) Opera"@en ,
+                                                  "(Work) Opera"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary
+<http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> rdf:type owl:Class ;
+                                                                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.semanticweb.com/MusicOntology#libraryContains> ;
+                                                                                             owl:someValuesFrom <http://www.semanticweb.com/MusicOntology#NFTOpera>
+                                                                                           ] ;
+                                                                       rdfs:comment "Classe che rappresenta la  libreria Musciale di un determinato utente registrato alla piattaforma."@it ;
+                                                                       rdfs:label "LibreriaMusicale"@it ,
+                                                                                  "Music Library"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Album
+<http://www.semanticweb.com/MusicOntology#Album> rdf:type owl:Class ;
+                                                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#hasPart> ;
+                                                                       owl:someValuesFrom <http://www.semanticweb.com/MusicOntology#Song>
+                                                                     ] ;
+                                                 rdfs:subClassOf <http://purl.org/vocab/frbr/core#Work> ;
+                                                 owl:disjointWith <http://www.semanticweb.com/MusicOntology#Composition> ,
+                                                                  <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                 rdfs:comment "Classe che rappresenta una raccolta di brani musicale. Raccolta che forma l'album dell'autore."@it ;
+                                                 rdfs:label "Album"@en ,
+                                                            "Album"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Artist
+<http://www.semanticweb.com/MusicOntology#Artist> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://purl.org/vocab/frbr/core#Person> ;
+                                                  owl:disjointWith <http://www.semanticweb.com/MusicOntology#Group> ;
+                                                  owl:disjointUnionOf ( <http://www.semanticweb.com/MusicOntology#Composer>
+                                                                        <http://www.semanticweb.com/MusicOntology#Singer>
+                                                                      ) ;
+                                                  rdfs:comment "Una classe Artista  rappresenta una tipologia specifica della classe Persona. In questo caso viene rappresentato un qualsiasi artista."@it ;
+                                                  rdfs:label "Artist"@en ,
+                                                             "Artista"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#ArtistInActivity
+<http://www.semanticweb.com/MusicOntology#ArtistInActivity> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                            owl:disjointWith <http://www.semanticweb.com/MusicOntology#Group> ;
+                                                            rdfs:comment "Rappresenta un artista ancora in attività, che quindi può ancora produrre opere musicali."@it ;
+                                                            rdfs:label "ArtistInActivity"@en ,
+                                                                       "Artista in attività"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Composer
+<http://www.semanticweb.com/MusicOntology#Composer> rdf:type owl:Class ;
+                                                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://www.semanticweb.com/MusicOntology#composes> ;
+                                                                          owl:someValuesFrom <http://www.semanticweb.com/MusicOntology#Composition>
+                                                                        ] ;
+                                                    rdfs:subClassOf <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                    owl:disjointWith <http://www.semanticweb.com/MusicOntology#Group> ,
+                                                                     <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                    rdfs:comment "Una classe Compositore rappresenta una tipologia specifica della classe Artista. In questo caso viene rappresentato un qualsiasi compositore di musica."@it ;
+                                                    rdfs:label "Composer"@en ,
+                                                               "Compositore"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Composition
+<http://www.semanticweb.com/MusicOntology#Composition> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://purl.org/vocab/frbr/core#Work> ;
+                                                       owl:disjointWith <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                       rdfs:comment "Con la classe Composizone viene rappresentato una qualsiasi composizione."@it ;
+                                                       rdfs:label "Composition"@en ,
+                                                                  "Composizione"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Expert
+<http://www.semanticweb.com/MusicOntology#Expert> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.semanticweb.com/MusicOntology#User> ;
+                                                  rdfs:comment "Classe che rappresenta gli esperti musicali, cioè coloro che hannno nella loro libreria musicale il token di una composizione"@it ;
+                                                  rdfs:label "Esperto Musicale"@it ,
+                                                             "Expert"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Genre
+<http://www.semanticweb.com/MusicOntology#Genre> rdf:type owl:Class ;
+                                                 owl:equivalentClass [ rdf:type owl:Class ;
+                                                                       owl:oneOf ( <http://www.semanticweb.com/MusicOntology#Pop>
+                                                                                   <http://www.semanticweb.com/MusicOntology#Reggaeton>
+                                                                                   <http://www.semanticweb.com/MusicOntology#Space_Rock>
+                                                                                   <http://www.semanticweb.com/MusicOntology#Dance/Elettronica>
+                                                                                 )
+                                                                     ] ;
+                                                 rdfs:comment "Classe che rappresenta un genere musicale. Determina quindi il genere musicale del brano a cui è associato."@it ;
+                                                 rdfs:label "Genere"@it ,
+                                                            "Genre"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Group
+<http://www.semanticweb.com/MusicOntology#Group> rdf:type owl:Class ;
+                                                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://www.semanticweb.com/MusicOntology#consistOf> ;
+                                                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                       owl:onClass <http://www.semanticweb.com/MusicOntology#Artist>
+                                                                     ] ;
+                                                 rdfs:subClassOf <http://purl.org/vocab/frbr/core#CorporateBody> ;
+                                                 owl:disjointWith <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                 rdfs:comment "Con la classe Gruppo rappresentiamo più individui che formano un gruppo musicale."@it ;
+                                                 rdfs:label "Group"@en ,
+                                                            "GruppoMusicale"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTOpera
+<http://www.semanticweb.com/MusicOntology#NFTOpera> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://purl.org/vocab/frbr/core#Item> ;
+                                                    rdfs:comment "Una classe NFT opera rappresenta un Token Non Fungibile che rappresenta una determianta opera musicale. Possiamo avere una serie limitata di Token Non Fungibili."@it ;
+                                                    rdfs:label "NFT Opera"@en ,
+                                                               "NFT Opera"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Singer
+<http://www.semanticweb.com/MusicOntology#Singer> rdf:type owl:Class ;
+                                                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty <http://www.semanticweb.com/MusicOntology#sing> ;
+                                                                        owl:someValuesFrom <http://www.semanticweb.com/MusicOntology#Song>
+                                                                      ] ;
+                                                  rdfs:subClassOf <http://www.semanticweb.com/MusicOntology#Artist> ;
+                                                  rdfs:comment "Con la classe Cantante vengono rappresentati i cantanti."@it ;
+                                                  rdfs:label "Cantante"@it ,
+                                                             "Singer"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Song
+<http://www.semanticweb.com/MusicOntology#Song> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.org/vocab/frbr/core#Work> ;
+                                                rdfs:comment "Con la classe Brano Musicale viene rappresentato un qualsiasi brano musicale."@it ;
+                                                rdfs:label "Brano Musicale"@it ,
+                                                           "Song"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#UncommonNFT
+<http://www.semanticweb.com/MusicOntology#UncommonNFT> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                       rdfs:comment """Rappresenta un token speciale in quanto, il suo valore, è molto maggiore rispetto agli altri token rappresentanti la stessa opera.
+Si è visto che più il token si avvicina al numero 1, più questi acquistano valore, con il token #1 che adirittura ha valori altissimi. Questo perché il token #1 ha la particolarità di essere il primo token coniato, rappresentate quella determinata opera."""@it ;
+                                                       rdfs:label "NFT Raro"@it ,
+                                                                  "UncommonNFT"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#User
+<http://www.semanticweb.com/MusicOntology#User> rdf:type owl:Class ;
+                                                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty <http://www.semanticweb.com/MusicOntology#hasLibrary> ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary>
+                                                                    ] ;
+                                                rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
+                                                rdfs:comment "Una classe Utente corrisponde al profilo di una determinata Persona."@it ;
+                                                rdfs:label "User"@en ,
+                                                           "Utente"@it .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+<http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class ;
+                                   rdfs:comment "Una classe Persona rappresenta delle persone (qualcosa/qualcuno è una Persona indipendentemente che sia viva o morta)."@it ;
+                                   rdfs:label "Person"@en ,
+                                              "Persona"@it .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.com/MusicOntology#Alex_Pall
+<http://www.semanticweb.com/MusicOntology#Alex_Pall> rdf:type owl:NamedIndividual ,
+                                                              <http://purl.org/vocab/frbr/core#Person> ,
+                                                              <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                              <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                              <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                              <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                     <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                               <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                               <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                     <http://www.semanticweb.com/MusicOntology#formAGroup> <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                     <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                     <http://www.semanticweb.com/MusicOntology#artistFullName> "Alex Pall"^^xsd:string ;
+                                                     <http://www.semanticweb.com/MusicOntology#artistNationality> "Stati Uniti"^^xsd:string ;
+                                                     <http://www.semanticweb.com/MusicOntology#birthDate> "16-05-1985"^^xsd:string ;
+                                                     <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                     <http://www.semanticweb.com/MusicOntology#stageName> "Alex Pall"^^xsd:string ;
+                                                     rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                     rdfs:label "Alex Pall"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Andrew_Taggart
+<http://www.semanticweb.com/MusicOntology#Andrew_Taggart> rdf:type owl:NamedIndividual ,
+                                                                   <http://purl.org/vocab/frbr/core#Person> ,
+                                                                   <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                                   <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                                   <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                                   <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                          <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                    <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                    <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                          <http://www.semanticweb.com/MusicOntology#formAGroup> <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                          <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                          <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                          <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                          <http://www.semanticweb.com/MusicOntology#artistFullName> "Andrew Taggart"^^xsd:string ;
+                                                          <http://www.semanticweb.com/MusicOntology#artistNationality> "Stati Uniti"^^xsd:string ;
+                                                          <http://www.semanticweb.com/MusicOntology#birthDate> "31-12-1989"^^xsd:string ;
+                                                          <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                          <http://www.semanticweb.com/MusicOntology#stageName> "Drew Taggart"^^xsd:string ;
+                                                          rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                          rdfs:label "Andrew Taggart"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Bloodstream
+<http://www.semanticweb.com/MusicOntology#Bloodstream> rdf:type owl:NamedIndividual ,
+                                                                <http://purl.org/vocab/frbr/core#Expression> ,
+                                                                <http://purl.org/vocab/frbr/core#Work> ,
+                                                                <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                       <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Alex_Pall> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Andrew_Taggart> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Matt_McGuire> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Rhett_Bixler> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                       <http://purl.org/vocab/frbr/core#embodiment> <http://www.semanticweb.com/MusicOntology#NFTBloodstream> ;
+                                                       <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#Memories...Do_Not_Open> ;
+                                                       <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ;
+                                                       <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Alex_Pall> ,
+                                                                                                           <http://www.semanticweb.com/MusicOntology#Andrew_Taggart> ,
+                                                                                                           <http://www.semanticweb.com/MusicOntology#Matt_McGuire> ,
+                                                                                                           <http://www.semanticweb.com/MusicOntology#Rhett_Bixler> ;
+                                                       <http://www.semanticweb.com/MusicOntology#singedByGroup> <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                       rdfs:comment "Brano musicale"@it ;
+                                                       rdfs:label "Bloodstream"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Daddy_Yankee
+<http://www.semanticweb.com/MusicOntology#Daddy_Yankee> rdf:type owl:NamedIndividual ,
+                                                                 <http://purl.org/vocab/frbr/core#Person> ,
+                                                                 <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                        <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Despacito> ;
+                                                        <http://www.semanticweb.com/MusicOntology#featuring> <http://www.semanticweb.com/MusicOntology#Luis_Fonsi> ;
+                                                        <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Despacito> ;
+                                                        <http://www.semanticweb.com/MusicOntology#artistFullName> "Ramón Luis Ayala Rodríguez"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#artistNationality> "Porto Rico"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#birthDate> "03-02-1977"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                        <http://www.semanticweb.com/MusicOntology#stageName> "Daddy Yankee"^^xsd:string ;
+                                                        rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                        rdfs:label "Daddy Yankee"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Despacito
+<http://www.semanticweb.com/MusicOntology#Despacito> rdf:type owl:NamedIndividual ,
+                                                              <http://purl.org/vocab/frbr/core#Expression> ,
+                                                              <http://purl.org/vocab/frbr/core#Work> ,
+                                                              <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                     <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Daddy_Yankee> ,
+                                                                                                 <http://www.semanticweb.com/MusicOntology#Justin_Bieber> ,
+                                                                                                 <http://www.semanticweb.com/MusicOntology#Luis_Fonsi> ;
+                                                     <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Reggaeton> ;
+                                                     <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Daddy_Yankee> ,
+                                                                                                         <http://www.semanticweb.com/MusicOntology#Justin_Bieber> ,
+                                                                                                         <http://www.semanticweb.com/MusicOntology#Luis_Fonsi> ;
+                                                     rdfs:comment "Brano Musicale"@it ;
+                                                     rdfs:label "Despacito"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Dua_Lipa
+<http://www.semanticweb.com/MusicOntology#Dua_Lipa> rdf:type owl:NamedIndividual ,
+                                                             <http://purl.org/vocab/frbr/core#Person> ,
+                                                             <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                             <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                             <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                             <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                    <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Levitating> ,
+                                                                                              <http://www.semanticweb.com/MusicOntology#Love_Again> ,
+                                                                                              <http://www.semanticweb.com/MusicOntology#Dont't_Start_Now> ;
+                                                    <http://www.semanticweb.com/MusicOntology#hasAlbum> <http://www.semanticweb.com/MusicOntology#Future_Nostalgia> ;
+                                                    <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Levitating> ,
+                                                                                                    <http://www.semanticweb.com/MusicOntology#Love_Again> ,
+                                                                                                    <http://www.semanticweb.com/MusicOntology#Dont't_Start_Now> ;
+                                                    <http://www.semanticweb.com/MusicOntology#artistFullName> "Dua Lipa"^^xsd:string ;
+                                                    <http://www.semanticweb.com/MusicOntology#artistNationality> "Regno Unito"^^xsd:string ;
+                                                    <http://www.semanticweb.com/MusicOntology#birthDate> "22-08-1995"^^xsd:string ;
+                                                    <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                    <http://www.semanticweb.com/MusicOntology#stageName> "Dua Lipa"^^xsd:string ;
+                                                    rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                    rdfs:label "Dua Lipa"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Ed_Sheeran
+<http://www.semanticweb.com/MusicOntology#Ed_Sheeran> rdf:type owl:NamedIndividual ,
+                                                               <http://purl.org/vocab/frbr/core#Person> ,
+                                                               <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                               <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                               <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                               <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                      <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Friends> ,
+                                                                                                <http://www.semanticweb.com/MusicOntology#Galway_Girl> ,
+                                                                                                <http://www.semanticweb.com/MusicOntology#Happier> ,
+                                                                                                <http://www.semanticweb.com/MusicOntology#Perfect> ,
+                                                                                                <http://www.semanticweb.com/MusicOntology#Shape_of_You> ;
+                                                      <http://www.semanticweb.com/MusicOntology#hasAlbum> <http://www.semanticweb.com/MusicOntology#÷> ;
+                                                      <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Friends> ,
+                                                                                                      <http://www.semanticweb.com/MusicOntology#Galway_Girl> ,
+                                                                                                      <http://www.semanticweb.com/MusicOntology#Happier> ,
+                                                                                                      <http://www.semanticweb.com/MusicOntology#Perfect> ,
+                                                                                                      <http://www.semanticweb.com/MusicOntology#Shape_of_You> ;
+                                                      <http://www.semanticweb.com/MusicOntology#artistFullName> "Edward Christopher Sheeran"^^xsd:string ;
+                                                      <http://www.semanticweb.com/MusicOntology#artistNationality> "Regno Unito"^^xsd:string ;
+                                                      <http://www.semanticweb.com/MusicOntology#birthDate> "17-02-1991"^^xsd:string ;
+                                                      <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                      <http://www.semanticweb.com/MusicOntology#stageName> "Ed Sheeran"^^xsd:string ;
+                                                      rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                      rdfs:label "Ed Sheeran"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Friends
+<http://www.semanticweb.com/MusicOntology#Friends> rdf:type owl:NamedIndividual ,
+                                                            <http://purl.org/vocab/frbr/core#Expression> ,
+                                                            <http://purl.org/vocab/frbr/core#Work> ,
+                                                            <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                   <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ,
+                                                                                               <http://www.semanticweb.com/MusicOntology#Justin_Bieber> ;
+                                                   <http://purl.org/vocab/frbr/core#embodiment> <http://www.semanticweb.com/MusicOntology#NFTFriends> ;
+                                                   <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ,
+                                                                                                       <http://www.semanticweb.com/MusicOntology#Dance/Elettronica> ;
+                                                   <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ,
+                                                                                                       <http://www.semanticweb.com/MusicOntology#Justin_Bieber> ;
+                                                   rdfs:comment "Brano Musicale"@it ;
+                                                   rdfs:label "Friends"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Future_Nostalgia
+<http://www.semanticweb.com/MusicOntology#Future_Nostalgia> rdf:type owl:NamedIndividual ,
+                                                                     <http://purl.org/vocab/frbr/core#Expression> ,
+                                                                     <http://purl.org/vocab/frbr/core#Work> ,
+                                                                     <http://www.semanticweb.com/MusicOntology#Album> ;
+                                                            <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#hasPart> <http://www.semanticweb.com/MusicOntology#Levitating> ,
+                                                                                                                              <http://www.semanticweb.com/MusicOntology#Love_Again> ,
+                                                                                                                              <http://www.semanticweb.com/MusicOntology#Dont't_Start_Now> ;
+                                                            <http://www.semanticweb.com/MusicOntology#albumOf> <http://www.semanticweb.com/MusicOntology#Dua_Lipa> ;
+                                                            rdfs:comment "Album della cantante Dua Lipa"@it ;
+                                                            rdfs:label "Future Nostalgia"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Für_Elise
+<http://www.semanticweb.com/MusicOntology#Für_Elise> rdf:type owl:NamedIndividual ,
+                                                              <http://purl.org/vocab/frbr/core#Expression> ,
+                                                              <http://purl.org/vocab/frbr/core#Work> ,
+                                                              <http://www.semanticweb.com/MusicOntology#Composition> ;
+                                                     <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven> ;
+                                                     <http://purl.org/vocab/frbr/core#embodiment> <http://www.semanticweb.com/MusicOntology#NFTFür_Elise> ;
+                                                     <http://www.semanticweb.com/MusicOntology#composedBy> <http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven> ;
+                                                     rdfs:comment "Rappresenta una composizione."@it ;
+                                                     rdfs:label "Für Elise"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Galway_Girl
+<http://www.semanticweb.com/MusicOntology#Galway_Girl> rdf:type owl:NamedIndividual ,
+                                                                <http://purl.org/vocab/frbr/core#Expression> ,
+                                                                <http://purl.org/vocab/frbr/core#Work> ,
+                                                                <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                       <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                                       <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#÷> ;
+                                                       <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ;
+                                                       <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                                       rdfs:comment "Brano musicale"@it ;
+                                                       rdfs:label "Galway Girl"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Happier
+<http://www.semanticweb.com/MusicOntology#Happier> rdf:type owl:NamedIndividual ,
+                                                            <http://purl.org/vocab/frbr/core#Expression> ,
+                                                            <http://purl.org/vocab/frbr/core#Work> ,
+                                                            <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                   <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                                   <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#÷> ;
+                                                   <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ;
+                                                   <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                                   rdfs:comment "Brano musicale"@it ;
+                                                   rdfs:label "Happier"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Justin_Bieber
+<http://www.semanticweb.com/MusicOntology#Justin_Bieber> rdf:type owl:NamedIndividual ,
+                                                                  <http://purl.org/vocab/frbr/core#Person> ,
+                                                                  <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                                  <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                                  <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                                  <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                         <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Despacito> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Friends> ;
+                                                         <http://www.semanticweb.com/MusicOntology#featuring> <http://www.semanticweb.com/MusicOntology#Daddy_Yankee> ,
+                                                                                                              <http://www.semanticweb.com/MusicOntology#Luis_Fonsi> ;
+                                                         <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Despacito> ,
+                                                                                                         <http://www.semanticweb.com/MusicOntology#Friends> ;
+                                                         <http://www.semanticweb.com/MusicOntology#artistFullName> "Justin Drew Bieber"^^xsd:string ;
+                                                         <http://www.semanticweb.com/MusicOntology#artistNationality> "Canada"^^xsd:string ;
+                                                         <http://www.semanticweb.com/MusicOntology#birthDate> "01-03-1994"^^xsd:string ;
+                                                         <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                         <http://www.semanticweb.com/MusicOntology#stageName> "Justin Bieber"^^xsd:string ;
+                                                         rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                         rdfs:label "Justin Bieber"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Levitating
+<http://www.semanticweb.com/MusicOntology#Levitating> rdf:type owl:NamedIndividual ,
+                                                               <http://purl.org/vocab/frbr/core#Expression> ,
+                                                               <http://purl.org/vocab/frbr/core#Work> ,
+                                                               <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                      <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Dua_Lipa> ;
+                                                      <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#Future_Nostalgia> ;
+                                                      <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ,
+                                                                                                          <http://www.semanticweb.com/MusicOntology#Space_Rock> ;
+                                                      <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Dua_Lipa> ;
+                                                      rdfs:comment "Brano Musicale"@it ;
+                                                      rdfs:label "Levitating"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Libreria_Utente1
+<http://www.semanticweb.com/MusicOntology#Libreria_Utente1> rdf:type owl:NamedIndividual ,
+                                                                     <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> ;
+                                                            <http://www.semanticweb.com/MusicOntology#libraryContains> <http://www.semanticweb.com/MusicOntology#NFTMemories...DoNotOpen> ,
+                                                                                                                       <http://www.semanticweb.com/MusicOntology#NFTPerfect> ,
+                                                                                                                       <http://www.semanticweb.com/MusicOntology#NFTPerfect2> ;
+                                                            <http://www.semanticweb.com/MusicOntology#libraryHas> <http://www.semanticweb.com/MusicOntology#NFTBloodstream> ,
+                                                                                                                  <http://www.semanticweb.com/MusicOntology#NFTParis> ,
+                                                                                                                  <http://www.semanticweb.com/MusicOntology#NFTYoung> ;
+                                                            <http://www.semanticweb.com/MusicOntology#libraryOf> <http://www.semanticweb.com/MusicOntology#Utente1> ;
+                                                            rdfs:comment "Libreria dell'utente1"@it ;
+                                                            rdfs:label "Libreria Utente1"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Libreria_Utente2
+<http://www.semanticweb.com/MusicOntology#Libreria_Utente2> rdf:type owl:NamedIndividual ,
+                                                                     <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> ;
+                                                            <http://www.semanticweb.com/MusicOntology#libraryContains> <http://www.semanticweb.com/MusicOntology#NFTFür_Elise> ,
+                                                                                                                       <http://www.semanticweb.com/MusicOntology#NFTSinfonia_n._5> ;
+                                                            <http://www.semanticweb.com/MusicOntology#libraryOf> <http://www.semanticweb.com/MusicOntology#Utente2> ;
+                                                            rdfs:comment "Libreria dell'utente2"@it ;
+                                                            rdfs:label "Libreria Utente2"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Love_Again
+<http://www.semanticweb.com/MusicOntology#Love_Again> rdf:type owl:NamedIndividual ,
+                                                               <http://purl.org/vocab/frbr/core#Expression> ,
+                                                               <http://purl.org/vocab/frbr/core#Work> ,
+                                                               <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                      <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Dua_Lipa> ;
+                                                      <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#Future_Nostalgia> ;
+                                                      <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ;
+                                                      <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Dua_Lipa> ;
+                                                      rdfs:comment "Brano Musicale"@it ;
+                                                      rdfs:label "Love Again"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven
+<http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven> rdf:type owl:NamedIndividual ,
+                                                                         <http://purl.org/vocab/frbr/core#Person> ,
+                                                                         <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                                         <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                                         <http://www.semanticweb.com/MusicOntology#Composer> ;
+                                                                <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Für_Elise> ,
+                                                                                                          <http://www.semanticweb.com/MusicOntology#Sinfonia_n._3> ,
+                                                                                                          <http://www.semanticweb.com/MusicOntology#Sinfonia_n._5> ;
+                                                                <http://www.semanticweb.com/MusicOntology#composes> <http://www.semanticweb.com/MusicOntology#Für_Elise> ,
+                                                                                                                    <http://www.semanticweb.com/MusicOntology#Sinfonia_n._3> ,
+                                                                                                                    <http://www.semanticweb.com/MusicOntology#Sinfonia_n._5> ;
+                                                                <http://www.semanticweb.com/MusicOntology#artistFullName> "Ludwig van Beethoven"^^xsd:string ;
+                                                                <http://www.semanticweb.com/MusicOntology#artistNationality> "Germania"^^xsd:string ;
+                                                                <http://www.semanticweb.com/MusicOntology#birthDate> "26-03-1827"^^xsd:string ;
+                                                                <http://www.semanticweb.com/MusicOntology#deathDate> 1827 ;
+                                                                <http://www.semanticweb.com/MusicOntology#stageName> "Ludwig van Beethoven"^^xsd:string ;
+                                                                rdfs:comment "Individuo che rappresenta uno specifico compositore"@it ;
+                                                                rdfs:label "Ludwig van Beethoven"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Luis_Fonsi
+<http://www.semanticweb.com/MusicOntology#Luis_Fonsi> rdf:type owl:NamedIndividual ,
+                                                               <http://purl.org/vocab/frbr/core#Person> ,
+                                                               <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                               <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                               <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                               <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                      <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Despacito> ;
+                                                      <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Despacito> ;
+                                                      <http://www.semanticweb.com/MusicOntology#artistFullName> "Luis Alfonso Rodríguez López-Cepero"^^xsd:string ;
+                                                      <http://www.semanticweb.com/MusicOntology#artistNationality> "Porto Rico"^^xsd:string ;
+                                                      <http://www.semanticweb.com/MusicOntology#birthDate> "15- 04-1978"^^xsd:string ;
+                                                      <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                      <http://www.semanticweb.com/MusicOntology#stageName> "Luis Fonsi"^^xsd:string ;
+                                                      rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                      rdfs:label "Luis Fonsi"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Matt_McGuire
+<http://www.semanticweb.com/MusicOntology#Matt_McGuire> rdf:type owl:NamedIndividual ,
+                                                                 <http://purl.org/vocab/frbr/core#Person> ,
+                                                                 <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                        <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                  <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                  <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                        <http://www.semanticweb.com/MusicOntology#formAGroup> <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                        <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                        <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                        <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                        <http://www.semanticweb.com/MusicOntology#artistFullName> "Matt McGuire"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#artistNationality> "Australia"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#birthDate> "07-08-1993"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                        <http://www.semanticweb.com/MusicOntology#stageName> "Matt McGuire"^^xsd:string ;
+                                                        rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                        rdfs:label "Matt McGuire"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Memories...Do_Not_Open
+<http://www.semanticweb.com/MusicOntology#Memories...Do_Not_Open> rdf:type owl:NamedIndividual ,
+                                                                           <http://purl.org/vocab/frbr/core#Expression> ,
+                                                                           <http://purl.org/vocab/frbr/core#Work> ,
+                                                                           <http://www.semanticweb.com/MusicOntology#Album> ;
+                                                                  <http://purl.org/vocab/frbr/core#embodiment> <http://www.semanticweb.com/MusicOntology#NFTMemories...DoNotOpen> ;
+                                                                  <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#hasPart> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                                                    <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                                                    <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                                  <http://www.semanticweb.com/MusicOntology#albumOf> <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                                  rdfs:comment "Album musicale"@it ;
+                                                                  rdfs:label "Memories...Do Not Open"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTBloodstream
+<http://www.semanticweb.com/MusicOntology#NFTBloodstream> rdf:type owl:NamedIndividual ,
+                                                                   <http://purl.org/vocab/frbr/core#Item> ,
+                                                                   <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                                   <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                          <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Bloodstream> ;
+                                                          <http://www.semanticweb.com/MusicOntology#tokenSongContainedIn> <http://www.semanticweb.com/MusicOntology#NFTMemories...DoNotOpen> ;
+                                                          <http://www.semanticweb.com/MusicOntology#exemplarNumber> 100 ;
+                                                          <http://www.semanticweb.com/MusicOntology#idToken> 10236 ;
+                                                          <http://www.semanticweb.com/MusicOntology#nftName> "TokenBloodstream"^^xsd:string ;
+                                                          <http://www.semanticweb.com/MusicOntology#nftValue> 10 ;
+                                                          rdfs:comment "Token di uno specifico brano musicale"@it ;
+                                                          rdfs:label "NFTBloodstream"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTFriends
+<http://www.semanticweb.com/MusicOntology#NFTFriends> rdf:type owl:NamedIndividual ,
+                                                               <http://purl.org/vocab/frbr/core#Item> ,
+                                                               <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                               <http://www.semanticweb.com/MusicOntology#NFTOpera> ,
+                                                               <http://www.semanticweb.com/MusicOntology#UncommonNFT> ;
+                                                      <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Friends> ;
+                                                      <http://www.semanticweb.com/MusicOntology#exemplarNumber> 1 ;
+                                                      <http://www.semanticweb.com/MusicOntology#idToken> 10240 ;
+                                                      <http://www.semanticweb.com/MusicOntology#nftName> "NFTFriends"^^xsd:string ;
+                                                      <http://www.semanticweb.com/MusicOntology#nftValue> 85 ;
+                                                      rdfs:comment "Token di uno specifico brano musicale"@it ;
+                                                      rdfs:label "NFTFriends"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTFür_Elise
+<http://www.semanticweb.com/MusicOntology#NFTFür_Elise> rdf:type owl:NamedIndividual ,
+                                                                 <http://purl.org/vocab/frbr/core#Item> ,
+                                                                 <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                        <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Für_Elise> ;
+                                                        <http://www.semanticweb.com/MusicOntology#containedInLibrary> <http://www.semanticweb.com/MusicOntology#Libreria_Utente2> ;
+                                                        <http://www.semanticweb.com/MusicOntology#exemplarNumber> 55 ;
+                                                        <http://www.semanticweb.com/MusicOntology#idToken> 40913 ;
+                                                        <http://www.semanticweb.com/MusicOntology#nftName> "TokenFür Elise #1"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#nftValue> 50 ;
+                                                        rdfs:comment "Tokenizzazione della composizione"@it ;
+                                                        rdfs:label "NFTFürElise"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTMemories...DoNotOpen
+<http://www.semanticweb.com/MusicOntology#NFTMemories...DoNotOpen> rdf:type owl:NamedIndividual ,
+                                                                            <http://purl.org/vocab/frbr/core#Item> ,
+                                                                            <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                                            <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                                   <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Memories...Do_Not_Open> ;
+                                                                   <http://www.semanticweb.com/MusicOntology#containedInLibrary> <http://www.semanticweb.com/MusicOntology#Libreria_Utente1> ;
+                                                                   <http://www.semanticweb.com/MusicOntology#tokenAlbumContains> <http://www.semanticweb.com/MusicOntology#NFTBloodstream> ,
+                                                                                                                                 <http://www.semanticweb.com/MusicOntology#NFTParis> ,
+                                                                                                                                 <http://www.semanticweb.com/MusicOntology#NFTYoung> ;
+                                                                   <http://www.semanticweb.com/MusicOntology#exemplarNumber> 250 ;
+                                                                   <http://www.semanticweb.com/MusicOntology#idToken> 33595 ;
+                                                                   <http://www.semanticweb.com/MusicOntology#nftName> "TokenMemories...Do Not Open #1"^^xsd:string ;
+                                                                   <http://www.semanticweb.com/MusicOntology#nftValue> 66 ;
+                                                                   rdfs:comment "Tokenizzazione dell'album Memories...Do Not Open"@it ;
+                                                                   rdfs:label "NFTMemories...Do Not Open"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTParis
+<http://www.semanticweb.com/MusicOntology#NFTParis> rdf:type owl:NamedIndividual ,
+                                                             <http://purl.org/vocab/frbr/core#Item> ,
+                                                             <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                             <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                    <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Paris> ;
+                                                    <http://www.semanticweb.com/MusicOntology#tokenSongContainedIn> <http://www.semanticweb.com/MusicOntology#NFTMemories...DoNotOpen> ;
+                                                    <http://www.semanticweb.com/MusicOntology#exemplarNumber> 1022 ;
+                                                    <http://www.semanticweb.com/MusicOntology#idToken> 90412 ;
+                                                    <http://www.semanticweb.com/MusicOntology#nftName> "TokenParis"^^xsd:string ;
+                                                    <http://www.semanticweb.com/MusicOntology#nftValue> 5 ;
+                                                    rdfs:comment "Token di uno specifico brano musicale"@it ;
+                                                    rdfs:label "NFTParis"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTPerfect
+<http://www.semanticweb.com/MusicOntology#NFTPerfect> rdf:type owl:NamedIndividual ,
+                                                               <http://purl.org/vocab/frbr/core#Item> ,
+                                                               <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                               <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                      <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Perfect> ;
+                                                      <http://www.semanticweb.com/MusicOntology#containedInLibrary> <http://www.semanticweb.com/MusicOntology#Libreria_Utente1> ;
+                                                      <http://www.semanticweb.com/MusicOntology#exemplarNumber> 11 ;
+                                                      <http://www.semanticweb.com/MusicOntology#idToken> 33389 ;
+                                                      <http://www.semanticweb.com/MusicOntology#nftName> "Token Perfect #1"^^xsd:string ;
+                                                      <http://www.semanticweb.com/MusicOntology#nftValue> 10 ;
+                                                      rdfs:comment "Tokenizzazione della canzone Perfect"@it ;
+                                                      rdfs:label "NFTPerfect"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTPerfect2
+<http://www.semanticweb.com/MusicOntology#NFTPerfect2> rdf:type owl:NamedIndividual ,
+                                                                <http://purl.org/vocab/frbr/core#Item> ,
+                                                                <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                                <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                       <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Perfect> ;
+                                                       <http://www.semanticweb.com/MusicOntology#containedInLibrary> <http://www.semanticweb.com/MusicOntology#Libreria_Utente1> ;
+                                                       <http://www.semanticweb.com/MusicOntology#exemplarNumber> 678 ;
+                                                       <http://www.semanticweb.com/MusicOntology#idToken> 12498 ;
+                                                       <http://www.semanticweb.com/MusicOntology#nftName> "NFTPerfect#2"^^xsd:string ;
+                                                       <http://www.semanticweb.com/MusicOntology#nftValue> 44 .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTSinfonia_n._5
+<http://www.semanticweb.com/MusicOntology#NFTSinfonia_n._5> rdf:type owl:NamedIndividual ,
+                                                                     <http://purl.org/vocab/frbr/core#Item> ,
+                                                                     <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                                     <http://www.semanticweb.com/MusicOntology#NFTOpera> ,
+                                                                     <http://www.semanticweb.com/MusicOntology#UncommonNFT> ;
+                                                            <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Sinfonia_n._5> ;
+                                                            <http://www.semanticweb.com/MusicOntology#containedInLibrary> <http://www.semanticweb.com/MusicOntology#Libreria_Utente2> ;
+                                                            <http://www.semanticweb.com/MusicOntology#exemplarNumber> 3 ;
+                                                            <http://www.semanticweb.com/MusicOntology#idToken> 70124 ;
+                                                            <http://www.semanticweb.com/MusicOntology#nftName> "TokenSinfonia n. 5 #1"^^xsd:string ;
+                                                            <http://www.semanticweb.com/MusicOntology#nftValue> 100 ;
+                                                            rdfs:comment "Tokenizzazione della composizione" ;
+                                                            rdfs:label "NFTSinfonia n. 5"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#NFTYoung
+<http://www.semanticweb.com/MusicOntology#NFTYoung> rdf:type owl:NamedIndividual ,
+                                                             <http://purl.org/vocab/frbr/core#Item> ,
+                                                             <http://purl.org/vocab/frbr/core#Manifestation> ,
+                                                             <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                    <http://purl.org/vocab/frbr/core#embodimentOf> <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                    <http://www.semanticweb.com/MusicOntology#tokenSongContainedIn> <http://www.semanticweb.com/MusicOntology#NFTMemories...DoNotOpen> ;
+                                                    <http://www.semanticweb.com/MusicOntology#exemplarNumber> 1104 ;
+                                                    <http://www.semanticweb.com/MusicOntology#idToken> 59183 ;
+                                                    <http://www.semanticweb.com/MusicOntology#nftName> "TokenYoung"^^xsd:string ;
+                                                    <http://www.semanticweb.com/MusicOntology#nftValue> 18 ;
+                                                    rdfs:comment "Token di uno specifico brano musicale"@it ;
+                                                    rdfs:label "NFTYoung"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Paris
+<http://www.semanticweb.com/MusicOntology#Paris> rdf:type owl:NamedIndividual ,
+                                                          <http://purl.org/vocab/frbr/core#Expression> ,
+                                                          <http://purl.org/vocab/frbr/core#Work> ,
+                                                          <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                 <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Alex_Pall> ,
+                                                                                             <http://www.semanticweb.com/MusicOntology#Andrew_Taggart> ,
+                                                                                             <http://www.semanticweb.com/MusicOntology#Matt_McGuire> ,
+                                                                                             <http://www.semanticweb.com/MusicOntology#Rhett_Bixler> ,
+                                                                                             <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                 <http://purl.org/vocab/frbr/core#embodiment> <http://www.semanticweb.com/MusicOntology#NFTParis> ;
+                                                 <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#Memories...Do_Not_Open> ;
+                                                 <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Dance/Elettronica> ;
+                                                 <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Alex_Pall> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Andrew_Taggart> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Matt_McGuire> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Rhett_Bixler> ;
+                                                 <http://www.semanticweb.com/MusicOntology#singedByGroup> <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                 rdfs:comment "Brano musicale"@it ;
+                                                 rdfs:label "Paris"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Perfect
+<http://www.semanticweb.com/MusicOntology#Perfect> rdf:type owl:NamedIndividual ,
+                                                            <http://purl.org/vocab/frbr/core#Expression> ,
+                                                            <http://purl.org/vocab/frbr/core#Work> ,
+                                                            <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                   <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                                   <http://purl.org/vocab/frbr/core#embodiment> <http://www.semanticweb.com/MusicOntology#NFTPerfect> ,
+                                                                                                <http://www.semanticweb.com/MusicOntology#NFTPerfect2> ;
+                                                   <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#÷> ;
+                                                   <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ;
+                                                   <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                                   rdfs:comment "Brano musicale"@it ;
+                                                   rdfs:label "Perfect"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Pop
+<http://www.semanticweb.com/MusicOntology#Pop> rdf:type owl:NamedIndividual ,
+                                                        <http://www.semanticweb.com/MusicOntology#Genre> ;
+                                               <http://www.semanticweb.com/MusicOntology#hasSongs> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Friends> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Galway_Girl> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Happier> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Levitating> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Love_Again> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Perfect> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Shape_of_You> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Young> ,
+                                                                                                   <http://www.semanticweb.com/MusicOntology#Dont't_Start_Now> ;
+                                               rdfs:comment "Rappresenta un tipo specifico di genere musicale, in particolare il Pop."@it ;
+                                               rdfs:label "Pop"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Reggaeton
+<http://www.semanticweb.com/MusicOntology#Reggaeton> rdf:type owl:NamedIndividual ,
+                                                              <http://www.semanticweb.com/MusicOntology#Genre> ;
+                                                     <http://www.semanticweb.com/MusicOntology#hasSongs> <http://www.semanticweb.com/MusicOntology#Despacito> ;
+                                                     rdfs:comment "Rappresenta un tipo specifico di genere musicale, in particolare il Raeggeton."@it ;
+                                                     rdfs:label "Raeggeton"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Rhett_Bixler
+<http://www.semanticweb.com/MusicOntology#Rhett_Bixler> rdf:type owl:NamedIndividual ,
+                                                                 <http://purl.org/vocab/frbr/core#Person> ,
+                                                                 <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Artist> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                        <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                  <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                  <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                        <http://www.semanticweb.com/MusicOntology#formAGroup> <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                        <http://www.semanticweb.com/MusicOntology#sing> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                        <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                        <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                        <http://www.semanticweb.com/MusicOntology#artistFullName> "Rhett Bixler"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#artistNationality> "Stati Uniti"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#birthDate> "31-12-1989"^^xsd:string ;
+                                                        <http://www.semanticweb.com/MusicOntology#deathDate> -1 ;
+                                                        <http://www.semanticweb.com/MusicOntology#stageName> "Rhett Bixler"^^xsd:string ;
+                                                        rdfs:comment "Individuo che rappresenta uno specifico cantante"@it ;
+                                                        rdfs:label "Rhett Bixler"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Shape_of_You
+<http://www.semanticweb.com/MusicOntology#Shape_of_You> rdf:type owl:NamedIndividual ,
+                                                                 <http://purl.org/vocab/frbr/core#Expression> ,
+                                                                 <http://purl.org/vocab/frbr/core#Work> ,
+                                                                 <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                        <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                                        <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#÷> ;
+                                                        <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ;
+                                                        <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                                        rdfs:comment "Brano Musicale"@it ;
+                                                        rdfs:label "Shape of You"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Sinfonia_n._3
+<http://www.semanticweb.com/MusicOntology#Sinfonia_n._3> rdf:type owl:NamedIndividual ,
+                                                                  <http://purl.org/vocab/frbr/core#Expression> ,
+                                                                  <http://purl.org/vocab/frbr/core#Work> ,
+                                                                  <http://www.semanticweb.com/MusicOntology#Composition> ;
+                                                         <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven> ;
+                                                         <http://www.semanticweb.com/MusicOntology#composedBy> <http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven> ;
+                                                         rdfs:comment "Rappresenta una compozione."@it ;
+                                                         rdfs:label "Sinfonia n. 3"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Sinfonia_n._5
+<http://www.semanticweb.com/MusicOntology#Sinfonia_n._5> rdf:type owl:NamedIndividual ,
+                                                                  <http://purl.org/vocab/frbr/core#Expression> ,
+                                                                  <http://purl.org/vocab/frbr/core#Work> ,
+                                                                  <http://www.semanticweb.com/MusicOntology#Composition> ;
+                                                         <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven> ;
+                                                         <http://purl.org/vocab/frbr/core#embodiment> <http://www.semanticweb.com/MusicOntology#NFTSinfonia_n._5> ;
+                                                         <http://www.semanticweb.com/MusicOntology#composedBy> <http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven> ;
+                                                         rdfs:comment "Rappresenta una composizione"@it ;
+                                                         rdfs:label "Sinfonia n. 5"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Space_Rock
+<http://www.semanticweb.com/MusicOntology#Space_Rock> rdf:type owl:NamedIndividual ,
+                                                               <http://www.semanticweb.com/MusicOntology#Genre> ;
+                                                      <http://www.semanticweb.com/MusicOntology#hasSongs> <http://www.semanticweb.com/MusicOntology#Levitating> ;
+                                                      rdfs:comment "Rappresenta un tipo specifico di genere musicale, in particolare il Space Rock."@it ;
+                                                      rdfs:label "Space Rock"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#The_Chainsmokers
+<http://www.semanticweb.com/MusicOntology#The_Chainsmokers> rdf:type owl:NamedIndividual ,
+                                                                     <http://purl.org/vocab/frbr/core#CorporateBody> ,
+                                                                     <http://purl.org/vocab/frbr/core#ResponsibleEntity> ,
+                                                                     <http://www.semanticweb.com/MusicOntology#Group> ;
+                                                            <http://purl.org/vocab/frbr/core#creator> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                      <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                      <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                            <http://www.semanticweb.com/MusicOntology#consistOf> <http://www.semanticweb.com/MusicOntology#Alex_Pall> ,
+                                                                                                                 <http://www.semanticweb.com/MusicOntology#Andrew_Taggart> ,
+                                                                                                                 <http://www.semanticweb.com/MusicOntology#Matt_McGuire> ,
+                                                                                                                 <http://www.semanticweb.com/MusicOntology#Rhett_Bixler> ;
+                                                            <http://www.semanticweb.com/MusicOntology#groupSing> <http://www.semanticweb.com/MusicOntology#Bloodstream> ,
+                                                                                                                 <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                                 <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                            <http://www.semanticweb.com/MusicOntology#hasAlbum> <http://www.semanticweb.com/MusicOntology#Memories...Do_Not_Open> ;
+                                                            rdfs:comment "Rappresenta il gruppo dei The Chainsmokers"@it ;
+                                                            rdfs:label "The Chainsmokers"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Utente1
+<http://www.semanticweb.com/MusicOntology#Utente1> rdf:type owl:NamedIndividual ,
+                                                            <http://www.semanticweb.com/MusicOntology#User> ,
+                                                            <http://xmlns.com/foaf/0.1/Person> ;
+                                                   <http://www.semanticweb.com/MusicOntology#hasLibrary> <http://www.semanticweb.com/MusicOntology#Libreria_Utente1> ;
+                                                   <http://www.semanticweb.com/MusicOntology#surnameUser> "Rossi"^^xsd:string ;
+                                                   <http://www.semanticweb.com/MusicOntology#userName> "Mario"^^xsd:string ;
+                                                   rdfs:comment "Raprresenta l' utente1 della piattaforma"@it ;
+                                                   rdfs:label "Utente1"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Utente2
+<http://www.semanticweb.com/MusicOntology#Utente2> rdf:type owl:NamedIndividual ,
+                                                            <http://www.semanticweb.com/MusicOntology#Expert> ,
+                                                            <http://www.semanticweb.com/MusicOntology#User> ,
+                                                            <http://xmlns.com/foaf/0.1/Person> ;
+                                                   <http://www.semanticweb.com/MusicOntology#hasLibrary> <http://www.semanticweb.com/MusicOntology#Libreria_Utente2> ;
+                                                   <http://www.semanticweb.com/MusicOntology#surnameUser> "Russo"^^xsd:string ;
+                                                   <http://www.semanticweb.com/MusicOntology#userName> "Giovanni"^^xsd:string ;
+                                                   rdfs:comment "Raprresenta l' utente2 della piattaforma"@it ;
+                                                   rdfs:label "Utente2"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Young
+<http://www.semanticweb.com/MusicOntology#Young> rdf:type owl:NamedIndividual ,
+                                                          <http://purl.org/vocab/frbr/core#Expression> ,
+                                                          <http://purl.org/vocab/frbr/core#Work> ,
+                                                          <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                 <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Alex_Pall> ,
+                                                                                             <http://www.semanticweb.com/MusicOntology#Andrew_Taggart> ,
+                                                                                             <http://www.semanticweb.com/MusicOntology#Matt_McGuire> ,
+                                                                                             <http://www.semanticweb.com/MusicOntology#Rhett_Bixler> ,
+                                                                                             <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                 <http://purl.org/vocab/frbr/core#embodiment> <http://www.semanticweb.com/MusicOntology#NFTYoung> ;
+                                                 <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#Memories...Do_Not_Open> ;
+                                                 <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Dance/Elettronica> ;
+                                                 <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Alex_Pall> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Andrew_Taggart> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Matt_McGuire> ,
+                                                                                                     <http://www.semanticweb.com/MusicOntology#Rhett_Bixler> ;
+                                                 <http://www.semanticweb.com/MusicOntology#singedByGroup> <http://www.semanticweb.com/MusicOntology#The_Chainsmokers> ;
+                                                 rdfs:comment "Brano musicale"@it ;
+                                                 rdfs:label "Young"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#Dance/Elettronica
+<http://www.semanticweb.com/MusicOntology#Dance/Elettronica> rdf:type owl:NamedIndividual ,
+                                                                      <http://www.semanticweb.com/MusicOntology#Genre> ;
+                                                             <http://www.semanticweb.com/MusicOntology#hasSongs> <http://www.semanticweb.com/MusicOntology#Friends> ,
+                                                                                                                 <http://www.semanticweb.com/MusicOntology#Paris> ,
+                                                                                                                 <http://www.semanticweb.com/MusicOntology#Young> ;
+                                                             rdfs:comment "Rappresenta un tipo specifico di genere musicale, in particolare il Dance/Elettronica."@it ;
+                                                             rdfs:label "Dance/Elettronica"@it .
+
+
+###  http://www.semanticweb.com/MusicOntology#Dont't_Start_Now
+<http://www.semanticweb.com/MusicOntology#Dont't_Start_Now> rdf:type owl:NamedIndividual ,
+                                                                     <http://purl.org/vocab/frbr/core#Expression> ,
+                                                                     <http://purl.org/vocab/frbr/core#Work> ,
+                                                                     <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                            <http://purl.org/vocab/frbr/core#creatorOf> <http://www.semanticweb.com/MusicOntology#Dua_Lipa> ;
+                                                            <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> <http://www.semanticweb.com/MusicOntology#Future_Nostalgia> ;
+                                                            <http://www.semanticweb.com/MusicOntology#hasGenre> <http://www.semanticweb.com/MusicOntology#Pop> ;
+                                                            <http://www.semanticweb.com/MusicOntology#singedBy> <http://www.semanticweb.com/MusicOntology#Dua_Lipa> ;
+                                                            rdfs:comment "Brano Musicale"@it ;
+                                                            rdfs:label "Dont't Start Now"@en .
+
+
+###  http://www.semanticweb.com/MusicOntology#÷
+<http://www.semanticweb.com/MusicOntology#÷> rdf:type owl:NamedIndividual ,
+                                                      <http://purl.org/vocab/frbr/core#Expression> ,
+                                                      <http://purl.org/vocab/frbr/core#Work> ,
+                                                      <http://www.semanticweb.com/MusicOntology#Album> ;
+                                             <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#hasPart> <http://www.semanticweb.com/MusicOntology#Galway_Girl> ,
+                                                                                                               <http://www.semanticweb.com/MusicOntology#Happier> ,
+                                                                                                               <http://www.semanticweb.com/MusicOntology#Perfect> ,
+                                                                                                               <http://www.semanticweb.com/MusicOntology#Shape_of_You> ;
+                                             <http://www.semanticweb.com/MusicOntology#albumOf> <http://www.semanticweb.com/MusicOntology#Ed_Sheeran> ;
+                                             rdfs:comment "Album del cantante Ed Sheeran"@it ;
+                                             rdfs:label "÷"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.com/MusicOntology#Alex_Pall>
+                        <http://www.semanticweb.com/MusicOntology#Andrew_Taggart>
+                        <http://www.semanticweb.com/MusicOntology#Bloodstream>
+                        <http://www.semanticweb.com/MusicOntology#Daddy_Yankee>
+                        <http://www.semanticweb.com/MusicOntology#Despacito>
+                        <http://www.semanticweb.com/MusicOntology#Dua_Lipa>
+                        <http://www.semanticweb.com/MusicOntology#Ed_Sheeran>
+                        <http://www.semanticweb.com/MusicOntology#Friends>
+                        <http://www.semanticweb.com/MusicOntology#Future_Nostalgia>
+                        <http://www.semanticweb.com/MusicOntology#Für_Elise>
+                        <http://www.semanticweb.com/MusicOntology#Galway_Girl>
+                        <http://www.semanticweb.com/MusicOntology#Happier>
+                        <http://www.semanticweb.com/MusicOntology#Justin_Bieber>
+                        <http://www.semanticweb.com/MusicOntology#Levitating>
+                        <http://www.semanticweb.com/MusicOntology#Libreria_Utente1>
+                        <http://www.semanticweb.com/MusicOntology#Libreria_Utente2>
+                        <http://www.semanticweb.com/MusicOntology#Love_Again>
+                        <http://www.semanticweb.com/MusicOntology#Ludwig_van_Beethoven>
+                        <http://www.semanticweb.com/MusicOntology#Luis_Fonsi>
+                        <http://www.semanticweb.com/MusicOntology#Matt_McGuire>
+                        <http://www.semanticweb.com/MusicOntology#Memories...Do_Not_Open>
+                        <http://www.semanticweb.com/MusicOntology#NFTBloodstream>
+                        <http://www.semanticweb.com/MusicOntology#NFTFriends>
+                        <http://www.semanticweb.com/MusicOntology#NFTFür_Elise>
+                        <http://www.semanticweb.com/MusicOntology#NFTMemories...DoNotOpen>
+                        <http://www.semanticweb.com/MusicOntology#NFTParis>
+                        <http://www.semanticweb.com/MusicOntology#NFTPerfect>
+                        <http://www.semanticweb.com/MusicOntology#NFTPerfect2>
+                        <http://www.semanticweb.com/MusicOntology#NFTSinfonia_n._5>
+                        <http://www.semanticweb.com/MusicOntology#NFTYoung>
+                        <http://www.semanticweb.com/MusicOntology#Paris>
+                        <http://www.semanticweb.com/MusicOntology#Perfect>
+                        <http://www.semanticweb.com/MusicOntology#Pop>
+                        <http://www.semanticweb.com/MusicOntology#Reggaeton>
+                        <http://www.semanticweb.com/MusicOntology#Rhett_Bixler>
+                        <http://www.semanticweb.com/MusicOntology#Shape_of_You>
+                        <http://www.semanticweb.com/MusicOntology#Sinfonia_n._3>
+                        <http://www.semanticweb.com/MusicOntology#Sinfonia_n._5>
+                        <http://www.semanticweb.com/MusicOntology#Space_Rock>
+                        <http://www.semanticweb.com/MusicOntology#The_Chainsmokers>
+                        <http://www.semanticweb.com/MusicOntology#Utente1>
+                        <http://www.semanticweb.com/MusicOntology#Utente2>
+                        <http://www.semanticweb.com/MusicOntology#Young>
+                        <http://www.semanticweb.com/MusicOntology#Dance/Elettronica>
+                        <http://www.semanticweb.com/MusicOntology#Dont't_Start_Now>
+                        <http://www.semanticweb.com/MusicOntology#÷>
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.com/MusicOntology#Libreria_Utente1>
+                        <http://www.semanticweb.com/MusicOntology#Libreria_Utente2>
+                      )
+] .
+
+
+[ rdf:type owl:AllDisjointProperties ;
+  owl:members ( <http://www.semanticweb.com/MusicOntology#composedBy>
+                <http://www.semanticweb.com/MusicOntology#singedBy>
+                <http://www.semanticweb.com/MusicOntology#singedByGroup>
+              )
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<http://www.semanticweb.com/MusicOntology#x> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#d> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#c> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#lib> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#nft> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#u> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#s> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#g> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#si> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#so> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#i> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.com/MusicOntology#o> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Ottengo tutti le canzoni di un determinato genere musicale"^^xsd:string ;
+   rdfs:label "GenreHasSongs"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#s>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#hasGenre> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#s> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#g>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#Genre> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#g>
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#hasSongs> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#g> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#s>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Se un gruppo musicale canta una canzone, allora anche tutti i membri del gruppo cantano quella canzone."^^xsd:string ;
+   rdfs:label "MemberOfGroupSing"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#Singer> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#si>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#Song> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#so>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#Group> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#g>
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#formAGroup> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#si> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#g>
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#groupSing> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#g> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#so>
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#sing> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#si> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#so>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Regola che determina la rarità di un token. I token con un ID <= 10 rientrano nei \"token rari\""^^xsd:string ;
+   rdfs:label "UncommonToken"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThanOrEqual> ;
+                                                       <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                    rdf:first <http://www.semanticweb.com/MusicOntology#i> ;
+                                                                                                    rdf:rest [ rdf:type rdf:List ;
+                                                                                                               rdf:first 10 ;
+                                                                                                               rdf:rest rdf:nil
+                                                                                                             ]
+                                                                                                  ]
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#exemplarNumber> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#o> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#i>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#o>
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#UncommonNFT> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#o>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Indica se il creatore di un'opera musicale è ancora in attività. Per semplicità, un artista è in attività se non è ancora morto. Un artista che non è morto avrà un valore fittizio \"-1\""^^xsd:string ;
+   rdfs:label "IsActive"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://purl.org/vocab/frbr/core#ResponsibleEntity> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#x>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#deathDate> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#x> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#d>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#equal> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.com/MusicOntology#d> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first -1 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#ArtistInActivity> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Se un utente ha nella libreria musicale una composzione allora è un utente intenditore, che ha un ampia conoscenza della musica."^^xsd:string ;
+   rdfs:label "Expert"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#Composition> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#c>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#MusicLibrary> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#lib>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#libraryContains> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#lib> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#nft>
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#User> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#u>
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#NFTOpera> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#nft>
+                                                                                                 ] ;
+                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.com/MusicOntology#hasLibrary> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#u> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#lib>
+                                                                                                            ] ;
+                                                                                                  rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                             rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                                                         <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://purl.org/vocab/frbr/core#embodimentOf> ;
+                                                                                                                         <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#nft> ;
+                                                                                                                         <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.com/MusicOntology#c>
+                                                                                                                       ] ;
+                                                                                                             rdf:rest rdf:nil
+                                                                                                           ]
+                                                                                                ]
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.com/MusicOntology#Expert> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.com/MusicOntology#u>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
