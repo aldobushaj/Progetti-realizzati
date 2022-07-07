@@ -11,8 +11,8 @@
     * Professor Torta
    
   > Machine Learning
-    * Classifiers Iris Decision tree
-    * Classifiers Knn
+    * Classifier, Iris, Decision tree
+    * Classifiers comparison: decision trees and k-nearest neighbors on the dataset Iris
     * Clustering
     * Classifiers comparison on texts with naive Bayes assumption
   
